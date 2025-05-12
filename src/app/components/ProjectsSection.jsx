@@ -7,7 +7,11 @@ import { motion, useInView } from "framer-motion";
 const projectsData = [
   {
     id: 1,
-    title: "React Portfolio Website",
+    title: (
+      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
+        React Portfolio Website
+      </span>
+    ),
     description: "Project 1 description",
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
@@ -16,7 +20,11 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Potography Portfolio Website",
+    title: (
+      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
+        Photography Portfolio Website
+      </span>
+    ),
     description: "Project 2 description",
     image: "/images/projects/2.png",
     tag: ["All", "Web"],
@@ -25,7 +33,11 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "E-commerce Application",
+    title: (
+      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
+        E-commerce Application
+      </span>
+    ),
     description: "Project 3 description",
     image: "/images/projects/3.png",
     tag: ["All", "Web"],
@@ -34,7 +46,11 @@ const projectsData = [
   },
   {
     id: 4,
-    title: "Food Ordering Application",
+    title: (
+      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
+        Food Ordering Application
+      </span>
+    ),
     description: "Project 4 description",
     image: "/images/projects/4.png",
     tag: ["All", "Mobile"],
@@ -43,7 +59,11 @@ const projectsData = [
   },
   {
     id: 5,
-    title: "React Firebase Template",
+    title: (
+      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
+        React Firebase Template
+      </span>
+    ),
     description: "Authentication and CRUD operations",
     image: "/images/projects/5.png",
     tag: ["All", "Web"],
@@ -52,7 +72,11 @@ const projectsData = [
   },
   {
     id: 6,
-    title: "Full-stack Roadmap",
+    title: (
+      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
+        Full-Stack Roadmap
+      </span>
+    ),
     description: "Project 5 description",
     image: "/images/projects/6.png",
     tag: ["All", "Web"],
@@ -61,14 +85,13 @@ const projectsData = [
   },
 ];
 
+
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const handleTagChange = (newTag) => {
-    setTag(newTag);
-  };
+  const handleTagChange = (newTag) => setTag(newTag);
 
   const filteredProjects = projectsData.filter((project) =>
     project.tag.includes(tag)
@@ -81,8 +104,8 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        My Projects
+      <h2 className="text-center text-4xl font-bold text-[#eb94cf] dark:text-[#03e9f4] mt-4 mb-8 md:mb-12">
+        MY PROJECTS
       </h2>
       <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
         <ProjectTag
@@ -104,14 +127,13 @@ const ProjectsSection = () => {
       <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
         {filteredProjects.map((project, index) => (
           <motion.li
-            key={index}
+            key={project.id}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
             transition={{ duration: 0.3, delay: index * 0.4 }}
           >
             <ProjectCard
-              key={project.id}
               title={project.title}
               description={project.description}
               imgUrl={project.image}

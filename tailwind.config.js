@@ -1,24 +1,24 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
+const colors = require('tailwindcss/colors');
+
 module.exports = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+    darkMode: 'class', // Enables class-based dark mode
+    content: [
+        './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+        './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+        './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    ],
+    theme: {
+        extend: {
+            colors: {
+                primary: colors.blue,
+                secondary: colors.purple,
+                dark: {
+                    bg: '#1a202c',
+                    text: '#e2e8f0',
+                },
+            },
+        },
     },
-    colors: {
-      ...colors,
-      primary: colors.purple,
-      secondary: colors.pink,
-    },
-  },
-  plugins: [],
+    plugins: [],
 };

@@ -1,28 +1,33 @@
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
+// export async function POST(req) {
+//     const { email, subject, message } = await req.json();
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
+//     const data = new URLSearchParams();
+//     data.append('service_id', process.env.YOUR_SERVICE_ID);
+//     data.append('template_id', process.env.YOUR_TEMPLATE_ID);
+//     data.append('user_id', process.env.YOUR_PUBLIC_KEY); // Note: Private key
+//     data.append('template_params', JSON.stringify({
+//         from_email: email,
+//         from_name: email,
+//         to_name: "Maritha Ebolosue",
+//         message: message,
+//         subject: subject,
+//     }));
 
-export async function POST(req, res) {
-  const { email, subject, message } = await req.json();
-  console.log(email, subject, message);
-  try {
-    const data = await resend.emails.send({
-      from: fromEmail,
-      to: [fromEmail, email],
-      subject: subject,
-      react: (
-        <>
-          <h1>{subject}</h1>
-          <p>Thank you for contacting us!</p>
-          <p>New message submitted:</p>
-          <p>{message}</p>
-        </>
-      ),
-    });
-    return NextResponse.json(data);
-  } catch (error) {
-    return NextResponse.json({ error });
-  }
-}
+//     try {
+//         const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+//             method: "POST",
+//             body: data,
+//             headers: {
+//                 'Content-Type': 'application/x-www-form-urlencoded',
+//             },
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(await response.text());
+//         }
+
+//         return NextResponse.json({ success: true });
+//     } catch (error) {
+//         return NextResponse.json({ error: "Failed to send email", details: error.message }, { status: 500 });
+//     }
+// }

@@ -1,27 +1,176 @@
+/* Tailwind's base, components, and utilities */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* === Light Theme (default) === */
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
+    /* Light text */
+    --background-start-rgb: 255, 255, 255;
+    /* Light background */
+    --background-end-rgb: 245, 245, 245;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+
+/* === Dark Theme (applied with `html.dark` class) === */
+
+html.dark {
     --foreground-rgb: 255, 255, 255;
+    /* Dark text */
     --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    /* Dark background */
+    --background-end-rgb: 20, 20, 20;
 }
+
+
+/* === Apply color variables to body === */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    color: rgb(var(--foreground-rgb));
+    /* background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+/* === Optional: smoother font rendering === */
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --btn-light: #eb94cf;
+    --btn-dark: #03e9f4;
+}
+
+body.light-mode {
+    --btn-color: var(--btn-light);
+}
+
+body.dark-mode {
+    --btn-color: var(--btn-dark);
+}
+
+
+/* === Custom Animations (unchanged) === */
+
+@keyframes border-run-top {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes border-run-right {
+    0% {
+        top: -100%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes border-run-bottom {
+    0% {
+        right: -100%;
+    }
+    100% {
+        right: 100%;
+    }
+}
+
+@keyframes border-run-left {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 100%;
+    }
+}
+
+@keyframes borderRunTop {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes borderRunRight {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes borderRunBottom {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* for send message button */
+
+@keyframes borderRunTop {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes borderRunRight {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes borderRunBottom {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes borderRunLeft {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes moveToTop {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-moveToTop {
+    animation: moveToTop 1s ease-out;
 }
