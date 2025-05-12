@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import NavLink from "./NavLink";
 import MenuOverlay from "./MenuOverlay";
-
+import Image from "next/image"; // Import Image from next/image
 
 const navLinks = [
   { title: "About", path: "#about" },
@@ -16,8 +16,11 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    if (localStorage.theme === "dark" || 
-        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
       document.documentElement.classList.add("dark");
       setIsDarkMode(true);
     }
@@ -32,37 +35,43 @@ const Navbar = () => {
   return (
     <nav className="fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-100">
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
-        <Link href={"/"} className="text-2xl md:text-5xl dark:text-cyan-100 text-pink-200 font-semibold">
+        <Link
+          href={"/"}
+          className="text-2xl md:text-5xl dark:text-cyan-100 text-pink-200 font-semibold"
+        >
           Portfolio
         </Link>
 
         {/* Dark Mode Button */}
-<button
-  onClick={toggleDarkMode}
-  className="group relative flex items-center gap-2 text-white p-2 rounded transition"
-  title="Toggle Dark Mode"
->
-  {/* Left text */}
-  <span className="text-xs font-semibold text-[#eb94cf] dark:text-[#03e9f4] opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse">
-    Click
-  </span>
+        <button
+          onClick={toggleDarkMode}
+          className="group relative flex items-center gap-2 text-white p-2 rounded transition"
+          title="Toggle Dark Mode"
+        >
+          {/* Left text */}
+          <span className="text-xs font-semibold text-[#eb94cf] dark:text-[#03e9f4] opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse">
+            Click
+          </span>
 
-  {/* Icon */}
-  <img
-    src={isDarkMode ? "/butterfly-svgrepo-com.svg" : "/flower-svgrepo-com (1).svg"}
-    alt="Theme Icon"
-    width={40}
-    height={40}
-    className={`transition duration-300 ease-in-out active:scale-95 animate-bounce 
-      group-hover:drop-shadow-[0_0_10px_#eb94cf] dark:group-hover:drop-shadow-[0_0_10px_#03e9f4]`}
-  />
+          {/* Icon */}
+          <Image
+            src={
+              isDarkMode
+                ? "/butterfly-svgrepo-com.svg"
+                : "/flower-svgrepo-com (1).svg"
+            }
+            alt="Theme Icon"
+            width={40}
+            height={40}
+            className={`transition duration-300 ease-in-out active:scale-95 animate-bounce 
+              group-hover:drop-shadow-[0_0_10px_#eb94cf] dark:group-hover:drop-shadow-[0_0_10px_#03e9f4]`}
+          />
 
-  {/* Right text */}
-  <span className="text-xs font-semibold text-[#eb94cf] dark:text-[#03e9f4] opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse">
-    Me!
-  </span>
-</button>
-
+          {/* Right text */}
+          <span className="text-xs font-semibold text-[#eb94cf] dark:text-[#03e9f4] opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse">
+            Me!
+          </span>
+        </button>
 
         {/* Mobile Menu Button */}
         <div className="mobile-menu block md:hidden">
@@ -71,11 +80,22 @@ const Navbar = () => {
             className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
           >
             {navbarOpen ? (
-  <img src="/public/butterfly-svgrepo-com.svg" alt="Close menu" className="h-10 w-10" />
-) : (
-  <img src="/public/flower-svgrepo-com (1).svg" alt="Open menu" className="h-10 w-10" />
-)}
-
+              <Image
+                src="/butterfly-svgrepo-com.svg"
+                alt="Close menu"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+            ) : (
+              <Image
+                src="/flower-svgrepo-com (1).svg"
+                alt="Open menu"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+            )}
           </button>
         </div>
 

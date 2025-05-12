@@ -67,7 +67,7 @@ const AboutSection = () => {
             className="dark:hidden"
             width={500}
             height={500}
-            layout="responsive"
+            priority
           />
           
           {/* Dark mode image */}
@@ -77,7 +77,7 @@ const AboutSection = () => {
             className="hidden dark:block"
             width={500}
             height={500}
-            layout="responsive"
+            priority
           />
         </div>
 

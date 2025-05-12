@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Image from 'next/image' // Import Image from next/image
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(false)
@@ -28,7 +29,7 @@ export default function ThemeToggle() {
       className="p-2 rounded-md bg-gray-200 dark:bg-gray-800 text-black dark:text-white"
     >
       <Image
-        src={isDark ? '/public/butterfly-svgrepo-com.svg' : '/public/flower-svgrepo-com (1).svg'}
+        src={isDark ? '/butterfly-svgrepo-com.svg' : '/flower-svgrepo-com (1).svg'}
         alt="Theme Icon"
         width={24}
         height={24}

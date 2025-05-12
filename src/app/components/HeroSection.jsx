@@ -19,7 +19,7 @@ const HeroSection = () => {
         >
           <h1 className="text-[#eb94cf] dark:text-cyan-400 mb-4 text-4xl sm:text-5xl lg:text-6xl lg:leading-normal font-extrabold whitespace-nowrap">
             <span className="text-white dark:text-transparent bg-clip-text bg-gradient-to-r dark:from-primary-200 dark:to-secondary-200">
-              Hello, I'm
+              Hello, I&apos;m{" "}
             </span>
             <br></br>
             <TypeAnimation
@@ -40,7 +40,7 @@ const HeroSection = () => {
             />
           </h1>
           <p className="text-white dark:text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-          I'm a Node.js Developer passionate about building and handling robust backend databases, dynamic websites, and scalable applications.
+          I&apos;m{""} a Node.js Developer passionate about building and handling robust backend databases, dynamic websites, and scalable applications.{" "}
           </p>
           <div className="flex flex-col sm:flex-row gap-8">
   {/* Hire Me Button */}
