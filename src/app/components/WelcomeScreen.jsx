@@ -3,15 +3,18 @@ import { useEffect, useState } from "react";
 
 const messages = [
   "Welcome",
-  "Bienvenido",
-  "Bienvenue",
+  "Nnọọ",
+  "Ẹ káàbọ̀",
+  "Sannu",
+  "Hola",
+  "Olá",
+  "Salut",
   "Willkommen",
-  "Benvenuto",
-  "ようこそ",
-  "환영합니다",
-  "欢迎",
-  "Добро пожаловать",
-  "स्वागत है",
+  "Ciao",
+  "こんにちは",
+  "안녕하세요", 
+  "你好",
+  "أهلاً",
 ];
 
 const TYPING_SPEED = 50;
