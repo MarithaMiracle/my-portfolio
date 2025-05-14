@@ -35,4 +35,5 @@ yarn-error.log*
 next-env.d.ts
 
 terminalcontext.txt
+/Users/decagon/my-new-portfolio/nextjs-portfolio/.env
 .env
