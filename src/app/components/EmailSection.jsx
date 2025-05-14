@@ -48,7 +48,7 @@ return ( <section
 LET'S CONNECT </h5> <p className="dark:text-[#ADB7BE] text-white mb-4 max-w-md text-base lg:text-lg">
 <TypeAnimation
 sequence={[
-"I'm currently looking for new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+"Im currently looking for new opportunities, my inbox is always open. Whether you have a question or just want to say hi, Ill try my best to get back to you!",
 ]}
 wrapper="span"
 speed={60}
