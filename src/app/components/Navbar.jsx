@@ -1,14 +1,13 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import NavLink from "./NavLink";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import MenuOverlay from "./MenuOverlay";
-import Image from "next/image"; // Import Image from next/image
 
 const navLinks = [
-  { title: "About", path: "#about" },
-  { title: "Projects", path: "#projects" },
-  { title: "Contact", path: "#contact" },
+  { title: "about", path: "#about" },
+  { title: "projects", path: "#projects" },
+  { title: "contact", path: "#contact" },
 ];
 
 const Navbar = () => {
@@ -16,14 +15,9 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-      setIsDarkMode(true);
-    }
+    // Check if dark mode is enabled from localStorage
+    const theme = localStorage.getItem("theme");
+    setIsDarkMode(theme === "dark");
   }, []);
 
   const toggleDarkMode = () => {
@@ -33,84 +27,65 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-100">
-      <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
-        <Link
-          href={"/"}
-          className="text-2xl md:text-5xl dark:text-cyan-100 text-pink-200 font-semibold"
-        >
-          Portfolio
+    <nav className="fixed top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-100 w-full">
+      <div className="flex container mx-auto py-2 px-4 flex-wrap items-center justify-between">
+        <Link href={"/"} className="text-base md:text-3xl dark:text-cyan-100 text-pink-200 font-semibold">
+          ../maritha.dev
         </Link>
 
         {/* Dark Mode Button */}
-        <button
+        {/* Uncomment if you want a button to toggle dark mode */}
+        {/* <button
           onClick={toggleDarkMode}
           className="group relative flex items-center gap-2 text-white p-2 rounded transition"
           title="Toggle Dark Mode"
         >
-          {/* Left text */}
-          <span className="text-xs font-semibold text-[#eb94cf] dark:text-[#03e9f4] opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse">
-            Click
-          </span>
-
-          {/* Icon */}
           <Image
-            src={
-              isDarkMode
-                ? "/butterfly-svgrepo-com.svg"
-                : "/flower-svgrepo-com (1).svg"
-            }
+            src={isDarkMode ? "/butterfly-svgrepo-com.svg" : "/flower-svgrepo-com (1).svg"}
             alt="Theme Icon"
             width={40}
             height={40}
-            className={`transition duration-300 ease-in-out active:scale-95 animate-bounce 
-              group-hover:drop-shadow-[0_0_10px_#eb94cf] dark:group-hover:drop-shadow-[0_0_10px_#03e9f4]`}
+            className="transition duration-300 ease-in-out"
           />
-
-          {/* Right text */}
-          <span className="text-xs font-semibold text-[#eb94cf] dark:text-[#03e9f4] opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse">
-            Me!
-          </span>
-        </button>
+        </button> */}
 
         {/* Mobile Menu Button */}
         <div className="mobile-menu block md:hidden">
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
-            className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
+            className="flex items-center px-3 py-2 border rounded text-slate-200 hover:text-white hover:border-white"
           >
-            {navbarOpen ? (
-              <Image
-                src="/butterfly-svgrepo-com.svg"
-                alt="Close menu"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
-            ) : (
-              <Image
-                src="/flower-svgrepo-com (1).svg"
-                alt="Open menu"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
-            )}
+            <Image
+              src={navbarOpen ? "/butterfly-svgrepo-com.svg" : "/flower-svgrepo-com (1).svg"}
+              alt="Toggle menu"
+              width={40}
+              height={40}
+              className="h-10 w-10"
+            />
           </button>
         </div>
 
         {/* Desktop Menu */}
-        <div className="menu hidden md:block md:w-auto" id="navbar">
+        <div className="menu hidden md:block md:w-auto">
           <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <NavLink href={link.path} title={link.title} />
+                <Link
+                  href={link.path}
+                  className={`block py-2 pl-3 pr-4 sm:text-xl rounded transition-all 
+                    ${isDarkMode ? "text-white hover:text-[#03e9f4] hover:drop-shadow-[0_0_10px_#03e9f4]" : "text-white hover:text-[#eb94cf] hover:drop-shadow-[0_0_10px_#eb94cf]"}`
+                  }
+                >
+                  {link.title}
+                </Link>
               </li>
             ))}
           </ul>
         </div>
       </div>
-      {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
+
+      {/* Mobile Menu Overlay */}
+      {navbarOpen && <MenuOverlay links={navLinks} />}
     </nav>
   );
 };
