@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Sparkle from "react-sparkle";
 
@@ -9,7 +10,7 @@ const Game = ({ theme }) => {
   const [gameOver, setGameOver] = useState(false);
   const [isButterfly, setIsButterfly] = useState(theme === "dark");
 
-  const iconSize = 40;
+  const iconSize = 20;
 
   const getRandomPosition = () => {
     const padding = 100;
@@ -54,48 +55,45 @@ const Game = ({ theme }) => {
 
   return (
     <>
-      {/* Fixed top-left container with margin for navbar */}
-      <div className="fixed top-16 left-4 z-50 flex items-center gap-4 max-w-full flex-wrap">
-        {/* Buttons */}
+      {/* Top-left controls */}
+      <div className="fixed top-12 left-4 z-50 flex items-center gap-2 flex-wrap max-w-full">
         {!gameStarted || gameOver ? (
           <button
             onClick={startGame}
-            className={`min-w-[100px] flex-shrink px-4 py-2 text-sm rounded-full border transition-all whitespace-nowrap
+            className={`min-w-[60px] px-3 py-1 text-[8px] sm:text-xs md:text-sm rounded-full border transition-all whitespace-nowrap
               ${
                 theme === "light"
-                  ? "border-[#eb94cf] text-[#eb94cf] hover:bg-[#eb94cf] hover:text-black hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf]"
-                  : "border-[#03e9f4] text-[#03e9f4] hover:bg-[#03e9f4] hover:text-black hover:shadow-[0_0_5px_#03e9f4,0_0_15px_#03e9f4,0_0_30px_#03e9f4]"
+                  ? "border-[#eb94cf] text-[#eb94cf] hover:bg-[#eb94cf] hover:text-black hover:shadow-[0_0_4px_#eb94cf,0_0_10px_#eb94cf]"
+                  : "border-[#03e9f4] text-[#03e9f4] hover:bg-[#03e9f4] hover:text-black hover:shadow-[0_0_4px_#03e9f4,0_0_10px_#03e9f4]"
               }`}
           >
             Start Game
           </button>
         ) : (
-          <>
-            <button
-              onClick={stopGame}
-              className={`min-w-[100px] flex-shrink px-4 py-2 text-sm rounded-full border transition-all whitespace-nowrap
-                ${
-                  theme === "light"
-                    ? "border-[#eb94cf] text-[#eb94cf] hover:bg-[#eb94cf] hover:text-black hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf]"
-                    : "border-[#03e9f4] text-[#03e9f4] hover:bg-[#03e9f4] hover:text-black hover:shadow-[0_0_5px_#03e9f4,0_0_15px_#03e9f4,0_0_30px_#03e9f4]"
-                }`}
-            >
-              End Game
-            </button>
-          </>
+          <button
+            onClick={stopGame}
+            className={`min-w-[60px] px-3 py-1 text-[8px] sm:text-xs md:text-sm rounded-full border transition-all whitespace-nowrap
+              ${
+                theme === "light"
+                  ? "border-[#eb94cf] text-[#eb94cf] hover:bg-[#eb94cf] hover:text-black hover:shadow-[0_0_4px_#eb94cf,0_0_10px_#eb94cf]"
+                  : "border-[#03e9f4] text-[#03e9f4] hover:bg-[#03e9f4] hover:text-black hover:shadow-[0_0_4px_#03e9f4,0_0_10px_#03e9f4]"
+              }`}
+          >
+            End Game
+          </button>
         )}
 
         {/* Instruction or Game Over Text */}
-        {!gameOver && gameStarted && (
-          <div className="relative text-sm font-bold text-white flex items-center pr-2 whitespace-nowrap">
+        {gameStarted && !gameOver && (
+          <div className="relative font-bold text-white text-[8px] sm:text-xs md:text-sm flex items-center pr-2">
             <Sparkle
               color={sparkleColor}
-              count={30}
-              minSize={5}
-              maxSize={8}
+              count={20}
+              minSize={3}
+              maxSize={6}
               fadeOutSpeed={10}
               flicker={false}
-              overflowPx={40}
+              overflowPx={30}
               style={{
                 position: "absolute",
                 top: 0,
@@ -107,20 +105,20 @@ const Game = ({ theme }) => {
                 borderRadius: "4px",
               }}
             />
-            <p className="relative z-10">{instructionText}</p>
+            <p className="relative z-10 whitespace-nowrap">{instructionText}</p>
           </div>
         )}
 
         {gameOver && (
-          <div className="relative text-sm font-bold text-white flex items-center pr-2 whitespace-nowrap">
+          <div className="relative font-bold text-white text-[8px] sm:text-xs md:text-sm flex items-center pr-2">
             <Sparkle
               color={sparkleColor}
-              count={30}
-              minSize={5}
-              maxSize={8}
+              count={20}
+              minSize={3}
+              maxSize={6}
               fadeOutSpeed={10}
               flicker={false}
-              overflowPx={40}
+              overflowPx={30}
               style={{
                 position: "absolute",
                 top: 0,
@@ -132,7 +130,7 @@ const Game = ({ theme }) => {
                 borderRadius: "4px",
               }}
             />
-            <p className="relative z-10">
+            <p className="relative z-10 whitespace-nowrap">
               Game Over!<br />Final Score: {score}
             </p>
           </div>
@@ -151,7 +149,11 @@ const Game = ({ theme }) => {
             zIndex: 50,
           }}
         >
-          <img src={iconSrc} alt="icon" className="w-10 h-10" />
+          <img
+            src={iconSrc}
+            alt="icon"
+            className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
+          />
         </div>
       )}
     </>

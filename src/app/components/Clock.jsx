@@ -8,7 +8,6 @@ const Clock = ({ theme }) => {
     const interval = setInterval(() => {
       setTime(new Date());
     }, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -22,15 +21,10 @@ const Clock = ({ theme }) => {
 
   return (
     <div
-      className={`fixed top-16 right-4 z-50 flex items-center min-w-[100px] px-2 py-1 rounded whitespace-nowrap
-        ${
-          theme === "light"
-            ? "text-[#eb94cf]"
-            : "text-[#03e9f4]"
-        }
-        text-base sm:text-lg md:text-xl font-bold
-        flex-shrink`}
-      // remove backdropFilter since no background
+      className={`fixed top-12 right-4 z-50 flex items-center px-2 py-1 rounded whitespace-nowrap
+        ${theme === "light" ? "text-[#eb94cf]" : "text-[#03e9f4]"}
+        text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] xl:text-[16px]
+        font-bold flex-shrink transition-all duration-300 ease-in-out`}
       title="Current Time"
     >
       {formattedTime}

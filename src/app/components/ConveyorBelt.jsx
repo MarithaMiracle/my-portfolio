@@ -2,25 +2,24 @@
 import React from "react";
 
 const frameworks = [
-  { name: "Node.js", color: "#A8DADC" },
-  { name: "Express", color: "#FAD4D4" },
-  { name: "PostgreSQL", color: "#FFE5B4" },
-  { name: "MongoDB", color: "#C1E1C1" },
-  { name: "Sequelize", color: "#D7BDE2" },
-  { name: "JavaScript", color: "#FFD6A5" },
-  { name: "React", color: "#A0CED9" },
-  { name: "Next.js", color: "#F5B7B1" },
-  { name: "Tailwind CSS", color: "#B0E0E6" },
+  { name: "Node.js", color: "#00B4D8" },
+  { name: "Express", color: "#EF476F" },
+  { name: "PostgreSQL", color: "#FFD166" },
+  { name: "MongoDB", color: "#06D6A0" },
+  { name: "Sequelize", color: "#9B5DE5" },
+  { name: "JavaScript", color: "#F4A261" },
+  { name: "React", color: "#118AB2" },
+  { name: "Next.js", color: "#FF595E" },
+  { name: "Tailwind CSS", color: "#3A86FF" },
 ];
 
 const repeatedFrameworks = [...frameworks, ...frameworks];
 
 const ConveyorBeltSingle = ({ reverse = false }) => {
   return (
-    <div className="relative right-6 left-6 z-50 flex w-full items-center min-w-[100px] select-none">
-
+    <div className="relative z-50 flex w-full items-center select-none px-1 sm:px-4 md:px-6">
       <div
-        className={`flex whitespace-nowrap items-center gap-20 animate-marquee ${
+        className={`flex whitespace-nowrap items-center gap-3 sm:gap-6 md:gap-8 animate-marquee ${
           reverse ? "animate-marquee-reverse" : ""
         }`}
       >
@@ -28,26 +27,28 @@ const ConveyorBeltSingle = ({ reverse = false }) => {
           <button
             key={i}
             type="button"
-            className="flex items-center flex-shrink-0 rounded-full px-3 py-2 cursor-default select-text border border-slate-700"
+            className="flex items-center flex-shrink-0 rounded-full cursor-default select-text border border-slate-600 px-2 py-0.5 sm:px-4 sm:py-1 md:px-5 md:py-2"
             title={fw.name}
-            style={{ backgroundColor: "transparent", minWidth: "90px" }}
+            style={{ backgroundColor: "transparent", minWidth: "60px" }}
           >
             <span
-              className="inline-block rounded-full mr-4"
+              className="inline-block rounded-full mr-2 sm:mr-3"
               style={{
-                width: 10,
-                height: 10,
+                width: 9,
+                height: 9,
                 backgroundColor: fw.color,
-                boxShadow: `0 0 4px ${fw.color}`,
+                // Removed border here
               }}
             ></span>
-            <span className="text-white font-semibold text-sm">{fw.name}</span>
+            <span className="text-white font-normal text-[9px] sm:text-[12px] md:text-[14px]">
+              {fw.name}
+            </span>
           </button>
         ))}
       </div>
       <style jsx>{`
         .animate-marquee {
-          animation: marquee 30s linear infinite;
+          animation: marquee 15s linear infinite;
         }
         .animate-marquee-reverse {
           animation-direction: reverse;
@@ -67,7 +68,7 @@ const ConveyorBeltSingle = ({ reverse = false }) => {
 
 const ConveyorBelt = () => {
   return (
-    <div className="mt-16 w-full space-y-4">
+    <div className="mt-4 w-full space-y-1 sm:space-y-2">
       <ConveyorBeltSingle />
       <ConveyorBeltSingle reverse />
     </div>

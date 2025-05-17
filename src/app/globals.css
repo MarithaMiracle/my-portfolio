@@ -174,3 +174,8 @@ body.dark-mode {
 .animate-moveToTop {
     animation: moveToTop 1s ease-out;
 }
+
+html,
+body {
+    overflow-x: hidden;
+}

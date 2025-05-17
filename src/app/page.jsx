@@ -9,11 +9,11 @@ import ProjectsSection from "./components/ProjectsSection";
 import EmailSection from "./components/EmailSection";
 import Footer from "./components/Footer";
 import Game from "./components/Game";
-import Clock from "./components/Clock";
 import ThemeSelector from "./components/ThemeSelector";
 import WelcomeScreen from "./components/WelcomeScreen";
 import ChatWidget from "./components/ChatWidget";
 import ConveyorBelt from "./components/ConveyorBelt";
+import Clock from "./components/Clock";
 
 export default function Page() {
   const [themeChosen, setThemeChosen] = useState(false);
@@ -38,7 +38,7 @@ export default function Page() {
   return (
     <main className="dark:bg-[#04060f] flex min-h-screen flex-col bg-[#000000]">
       <Navbar />
-      <div className="container mt-24 mx-auto px-12 py-4 relative">
+      <div className="w-full max-w-screen-xl mt-24 mx-auto px-4 sm:px-6 lg:px-8 relative">
         <Game theme={theme} />
         <HeroSection />
         <Clock theme={theme} />

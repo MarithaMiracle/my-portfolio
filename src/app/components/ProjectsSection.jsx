@@ -85,7 +85,6 @@ const projectsData = [
   },
 ];
 
-
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
   const ref = useRef(null);
@@ -103,7 +102,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects">
+    <section id="projects" className="px-4 md:px-12 lg:px-20 py-10 max-w-7xl mx-auto">
       <h2 className="text-center text-4xl font-bold text-[#eb94cf] dark:text-[#03e9f4] mt-20 mb-8 md:mb-12">
         /my_projects
       </h2>
@@ -124,14 +123,14 @@ const ProjectsSection = () => {
           isSelected={tag === "Mobile"}
         />
       </div>
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
+      <ul ref={ref} className="space-y-8">
         {filteredProjects.map((project, index) => (
           <motion.li
             key={project.id}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
+            transition={{ duration: 0.3, delay: index * 0.3 }}
           >
             <ProjectCard
               title={project.title}
@@ -139,6 +138,7 @@ const ProjectsSection = () => {
               imgUrl={project.image}
               gitUrl={project.gitUrl}
               previewUrl={project.previewUrl}
+              imageLeft={index % 2 === 0} // even: left image, odd: right image
             />
           </motion.li>
         ))}
