@@ -13,6 +13,7 @@ import Clock from "./components/Clock";
 import ThemeSelector from "./components/ThemeSelector";
 import WelcomeScreen from "./components/WelcomeScreen";
 import ChatWidget from "./components/ChatWidget";
+import ConveyorBelt from "./components/ConveyorBelt";
 
 export default function Page() {
   const [themeChosen, setThemeChosen] = useState(false);
@@ -43,6 +44,7 @@ export default function Page() {
         <Clock theme={theme} />
         <AchievementsSection />
         <AboutSection />
+        <ConveyorBelt />
         <ProjectsSection />
         <EmailSection />
         <ChatWidget />

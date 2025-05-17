@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-100 w-full">
       <div className="flex container mx-auto py-2 px-4 flex-wrap items-center justify-between">
-        <Link href={"/"} className="text-base md:text-3xl dark:text-cyan-100 text-pink-200 font-semibold">
+        <Link href={"/"} className="text-sm md:text-base lg:text-xl dark:text-cyan-100 text-pink-200 font-semibold">
           ../maritha.dev
         </Link>
 
@@ -49,8 +49,8 @@ const Navbar = () => {
           />
         </button> */}
 
-        {/* Mobile Menu Button */}
-        <div className="mobile-menu block md:hidden">
+        {/* Mobile Menu Button
+        <div className="mobile-menu block">
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
             className="flex items-center px-3 py-2 border rounded text-slate-200 hover:text-white hover:border-white"
@@ -63,16 +63,16 @@ const Navbar = () => {
               className="h-10 w-10"
             />
           </button>
-        </div>
+        </div> */}
 
         {/* Desktop Menu */}
-        <div className="menu hidden md:block md:w-auto">
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
+        <div className="block">
+          <ul className="flex mt-0">
             {navLinks.map((link, index) => (
               <li key={index}>
                 <Link
                   href={link.path}
-                  className={`block py-2 pl-3 pr-4 sm:text-xl rounded transition-all 
+                  className={`block py-2 pl-3 pr-4 text-sm rounded transition-all 
                     ${isDarkMode ? "text-white hover:text-[#03e9f4] hover:drop-shadow-[0_0_10px_#03e9f4]" : "text-white hover:text-[#eb94cf] hover:drop-shadow-[0_0_10px_#eb94cf]"}`
                   }
                 >
@@ -85,7 +85,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu Overlay */}
-      {navbarOpen && <MenuOverlay links={navLinks} />}
+      {/* {navbarOpen && <MenuOverlay links={navLinks} />} */}
     </nav>
   );
 };

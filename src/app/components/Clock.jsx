@@ -2,31 +2,40 @@
 import { useEffect, useState } from "react";
 
 const Clock = ({ theme }) => {
-    const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState(new Date());
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTime(new Date());
-        }, 1000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
 
-        // Cleanup the interval on component unmount
-        return () => clearInterval(interval);
-    }, []);
+    return () => clearInterval(interval);
+  }, []);
 
-    const hours = time.getHours();
-    const minutes = time.getMinutes();
-    const seconds = time.getSeconds();
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
+  const seconds = time.getSeconds();
 
-    // Format the time (to ensure double digits for single digit numbers)
-    const formattedTime = `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+  const formattedTime = `${hours < 10 ? "0" + hours : hours}:${
+    minutes < 10 ? "0" + minutes : minutes
+  }:${seconds < 10 ? "0" + seconds : seconds}`;
 
-    return (
-        <div
-                className={`absolute top-0 right-[-50px] text-lg font-bold ${theme === "light" ? "text-[#eb94cf]" : "text-[#03e9f4]"}`}
-        >
-            {formattedTime}
-        </div>
-    );
+  return (
+    <div
+      className={`fixed top-16 right-4 z-50 flex items-center min-w-[100px] px-2 py-1 rounded whitespace-nowrap
+        ${
+          theme === "light"
+            ? "text-[#eb94cf]"
+            : "text-[#03e9f4]"
+        }
+        text-base sm:text-lg md:text-xl font-bold
+        flex-shrink`}
+      // remove backdropFilter since no background
+      title="Current Time"
+    >
+      {formattedTime}
+    </div>
+  );
 };
 
 export default Clock;
