@@ -2,16 +2,19 @@
 import React from "react";
 
 const frameworks = [
-  { name: "Node.js", color: "#00B4D8" },
-  { name: "Express", color: "#EF476F" },
-  { name: "PostgreSQL", color: "#FFD166" },
-  { name: "MongoDB", color: "#06D6A0" },
-  { name: "Sequelize", color: "#9B5DE5" },
-  { name: "JavaScript", color: "#F4A261" },
-  { name: "React", color: "#118AB2" },
-  { name: "Next.js", color: "#FF595E" },
-  { name: "Tailwind CSS", color: "#3A86FF" },
+  { name: "Node.js", color: "#90E0EF" },       // pastel blue
+  { name: "Express", color: "#FFB3C1" },       // soft coral pink
+  { name: "PostgreSQL", color: "#FFE066" },    // pastel yellow
+  { name: "MongoDB", color: "#77DD77" },       // soft mint green
+  { name: "Sequelize", color: "#D0BFFF" },     // soft lilac
+  { name: "JavaScript", color: "#FFE5B4" },    // peachy pastel
+  { name: "React", color: "#A0C4FF" },         // baby blue
+  { name: "Next.js", color: "#FFADAD" },       // warm pastel red
+  { name: "Tailwind CSS", color: "#BDE0FE" },  // sky pastel
+  { name: "TypeScript", color: "#77DD77" },    // soft green
+  { name: "Docker", color: "#A9DEF9" },        // light azure
 ];
+
 
 const repeatedFrameworks = [...frameworks, ...frameworks];
 
@@ -19,7 +22,7 @@ const ConveyorBeltSingle = ({ reverse = false }) => {
   return (
     <div className="relative z-50 flex w-full items-center select-none px-1 sm:px-4 md:px-6">
       <div
-        className={`flex whitespace-nowrap items-center gap-3 sm:gap-6 md:gap-8 animate-marquee ${
+        className={`flex whitespace-nowrap items-center gap-6 sm:gap-10 md:gap-18 animate-marquee ${
           reverse ? "animate-marquee-reverse" : ""
         }`}
       >
@@ -27,7 +30,7 @@ const ConveyorBeltSingle = ({ reverse = false }) => {
           <button
             key={i}
             type="button"
-            className="flex items-center flex-shrink-0 rounded-full cursor-default select-text border border-slate-600 px-2 py-0.5 sm:px-4 sm:py-1 md:px-5 md:py-2"
+            className="flex items-center flex-shrink-0 rounded-full cursor-default select-text border border-slate-800 px-2 py-0.5 sm:px-4 sm:py-1 md:px-5 md:py-2"
             title={fw.name}
             style={{ backgroundColor: "transparent", minWidth: "60px" }}
           >
@@ -48,7 +51,7 @@ const ConveyorBeltSingle = ({ reverse = false }) => {
       </div>
       <style jsx>{`
         .animate-marquee {
-          animation: marquee 15s linear infinite;
+          animation: marquee 25s linear infinite;
         }
         .animate-marquee-reverse {
           animation-direction: reverse;
@@ -68,7 +71,7 @@ const ConveyorBeltSingle = ({ reverse = false }) => {
 
 const ConveyorBelt = () => {
   return (
-    <div className="mt-4 w-full space-y-1 sm:space-y-2">
+    <div className="mt-4 w-full space-y-2 sm:space-y-3 md:space-y-4">
       <ConveyorBeltSingle />
       <ConveyorBeltSingle reverse />
     </div>

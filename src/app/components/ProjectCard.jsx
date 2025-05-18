@@ -1,6 +1,6 @@
-
+"use client";
 import React from "react";
-import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, imageLeft = true }) => {
@@ -25,20 +25,22 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, imageLeft
       <div className="flex-1 px-2 md:px-4 text-white text-center md:text-left">
         <h5 className="text-xl sm:text-2xl font-semibold mb-2">{title}</h5>
         <p className="text-sm sm:text-base text-[#ADB7BE] mb-4">{description}</p>
-        <div className="flex justify-center md:justify-start gap-4 mt-2">
-          <Link
-            href={gitUrl}
-            className="h-11 w-11 flex items-center justify-center border-2 border-[#ADB7BE] hover:border-white rounded-full transition duration-300"
-          >
-            <CodeBracketIcon className="h-6 w-6 text-[#ADB7BE] hover:text-white" />
-          </Link>
-          <Link
-            href={previewUrl}
-            className="h-11 w-11 flex items-center justify-center border-2 border-[#ADB7BE] hover:border-white rounded-full transition duration-300"
-          >
-            <EyeIcon className="h-6 w-6 text-[#ADB7BE] hover:text-white" />
-          </Link>
-        </div>
+
+        {/* Visit here link */}
+        {previewUrl && (
+          <div className="mt-4 text-center md:text-left">
+            <Link
+  href={previewUrl}
+  className="inline-flex items-center border-b border-[#ADB7BE] pb-0.5 text-[#ADB7BE] transition-colors duration-300 group hover:text-pink-300 dark:hover:text-cyan-400"
+>
+  <span className="pr-1">Visit here</span>
+  <ArrowRightIcon
+    className="h-3 w-3 ml-1 transform scale-x-150 hover:text-pink-300 dark:hover:text-cyan-500 -rotate-45 transition-transform duration-300 group-hover:rotate-180"
+  />
+</Link>
+
+          </div>
+        )}
       </div>
     </div>
   );

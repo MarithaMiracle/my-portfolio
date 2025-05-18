@@ -6,14 +6,19 @@ const ThemeSelector = ({ onSelect }) => {
   const [hasChosen, setHasChosen] = useState(false);
 
   const handleSelect = (theme) => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
     localStorage.setItem("theme", theme);
     setHasChosen(true);
+
     setTimeout(() => {
-      onSelect(theme); // ✅ fixed here
+      onSelect(theme);
     }, 500);
   };
-  
 
   return (
     <div
@@ -25,7 +30,7 @@ const ThemeSelector = ({ onSelect }) => {
         Choose your preferred theme
       </h1>
 
-      <div className="flex space-x-12">
+      <div className="flex space-x-16 items-center">
         <button
           onClick={() => handleSelect("light")}
           className="flex flex-col items-center"
@@ -35,9 +40,9 @@ const ThemeSelector = ({ onSelect }) => {
             alt="Pink Theme"
             width={80}
             height={80}
-            className="hover:scale-110 transition-transform duration-300"
+            className="scale-110 hover:scale-125 transition-transform duration-300"
           />
-          <span className="text-pink-300 mt-2 font-semibold">Pink Theme</span>
+          <span className="text-pink-400 mt-2 font-semibold">Pink Theme</span>
         </button>
 
         <button
@@ -49,9 +54,9 @@ const ThemeSelector = ({ onSelect }) => {
             alt="Blue Theme"
             width={80}
             height={80}
-            className="hover:scale-110 transition-transform duration-300"
+            className="scale-90 hover:scale-105 transition-transform duration-300"
           />
-          <span className="text-cyan-300 mt-2 font-semibold">Blue Theme</span>
+          <span className="text-cyan-500 mt-2 font-semibold">Blue Theme</span>
         </button>
       </div>
     </div>

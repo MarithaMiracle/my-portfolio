@@ -9,16 +9,18 @@ const TAB_DATA = [
     title: "Skills",
     id: "skills",
     content: (
-      <ul className="list-disc pl-3 space-y-0.5" style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
+      <ul className="list-disc pl-3 space-y-0.5" style={{ fontSize: "clamp(14px, 1.2vw, 16px)" }}>
         <li>Node.js</li>
-        <li>Express</li>
-        <li>PostgreSQL</li>
-        <li>Mongo DB</li>
-        <li>Sequelize</li>
         <li>JavaScript</li>
+        <li>TypeScript</li>
         <li>React.js</li>
         <li>Next.js</li>
         <li>Tailwind CSS</li>
+        <li>Express</li>
+        <li>Sequelize</li>
+        <li>PostgreSQL</li>
+        <li>Mongo DB</li>
+        <li>Docker</li>
       </ul>
     ),
   },
@@ -26,7 +28,7 @@ const TAB_DATA = [
     title: "Education",
     id: "education",
     content: (
-      <ul className="list-disc pl-3 space-y-0.5" style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
+      <ul className="list-disc pl-3 space-y-0.5" style={{ fontSize: "clamp(14px, 1.2vw, 16px)" }}>
         <li>Full-Stack Academy of Code</li>
         <li>Delta State University</li>
       </ul>
@@ -36,7 +38,7 @@ const TAB_DATA = [
     title: "Certifications",
     id: "certifications",
     content: (
-      <ul className="list-disc pl-3 space-y-0.5" style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
+      <ul className="list-disc pl-3 space-y-0.5" style={{ fontSize: "clamp(14px, 1.2vw, 16px)" }}>
         <li>AWS Cloud Practitioner</li>
         <li>Google Professional Cloud Developer</li>
       </ul>
@@ -79,18 +81,18 @@ const AboutSection = () => {
             className="font-bold mb-2 text-[#eb94cf] dark:text-[#03e9f4]"
             style={{
              // replace with your pink hex or Tailwind color if needed
-              fontSize: "clamp(14px, 3vw, 24px)",
+              fontSize: "clamp(25px, 3vw, 35px)",
             }}
           >
             /about_me
           </h2>
           <p
             className="text-white dark:text-[#ADB7BE] leading-tight"
-            style={{ fontSize: "clamp(12px, 1.4vw, 16px)", maxWidth: "100%" }}
+            style={{ fontSize: "clamp(14px, 1.4vw, 18px)", maxWidth: "100%" }}
           >
             <TypeAnimation
               sequence={[
-                `I am a full stack web developer with a passion for creating interactive and responsive web applications. I have experience with JavaScript, React, Redux, Node.js, Express, PostgreSQL, Sequelize, HTML, CSS, and Git.`,
+                `I love to turn ideas into responsive, dynamic, and user-friendly digital experiences. With a solid foundation in both front-end and back-end technologies, I enjoy building clean, efficient solutions that bring real value. Whether I'm styling pixels to perfection or optimizing API performance, I approach every project with creativity, precision, and a growth mindset.`,
               ]}
               wrapper="span"
               speed={60}

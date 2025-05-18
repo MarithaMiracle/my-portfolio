@@ -21,7 +21,7 @@ const HeroSection = () => {
             <span className="block text-white dark:text-transparent bg-clip-text bg-gradient-to-r dark:from-primary-200 dark:to-secondary-200 text-xl sm:text-3xl md:text-4xl lg:text-5xl">
               Hello, I&apos;m{" "}
             </span>
-            <span className="inline-block text-lg sm:text-2xl md:text-3xl lg:text-4xl">
+            <span className="inline-block text-lg sm:text-3xl md:text-4xl lg:text-5xl">
               <TypeAnimation
                 sequence={[
                   "Maritha Ebolosue",
@@ -42,9 +42,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-white dark:text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6 max-w-full">
-            ...I&apos;m a Node.js Developer passionate about building and handling
-            robust backend databases, dynamic websites, and scalable
-            applications.
+            ...I&apos;m a Node.js Developer focused on building scalable, dynamic web applications and optimizing database performance for a seamless, high-impact user experience.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 w-full max-w-full">
