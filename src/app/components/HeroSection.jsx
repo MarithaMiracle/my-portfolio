@@ -21,7 +21,7 @@ const HeroSection = () => {
             <span className="block text-white dark:text-transparent bg-clip-text bg-gradient-to-r dark:from-primary-200 dark:to-secondary-200 text-xl sm:text-3xl md:text-4xl lg:text-5xl">
               Hello, I&apos;m{" "}
             </span>
-            <span className="inline-block text-lg sm:text-3xl md:text-4xl lg:text-5xl">
+            <span className="inline-block text-2xl sm:text-3xl md:text-4xl lg:text-6xl">
               <TypeAnimation
                 sequence={[
                   "Maritha Ebolosue",
