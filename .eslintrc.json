@@ -1,3 +1,7 @@
+// This is the ESLint configuration file. It defines rules and environments for linting the project's JavaScript/React code
+
 {
   "extends": "next/core-web-vitals"
 }
+
+
