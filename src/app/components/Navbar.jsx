@@ -30,7 +30,7 @@ const Navbar = () => {
         {/* Site title on the left, smaller */}
         <Link
           href="/"
-          className="text-xs sm:text-sm md:text-sm lg:text-base dark:text-cyan-100 text-pink-200 font-semibold"
+          className="text-sm sm:text-md md:text-lg lg:text-xl dark:text-cyan-100 text-pink-200 font-semibold"
         >
           ../maritha.dev
         </Link>
@@ -42,7 +42,7 @@ const Navbar = () => {
               <li key={index}>
                 <Link
                   href={link.path}
-                  className={`block py-1 px-2 text-[10px] sm:text-xs md:text-sm rounded transition-all 
+                  className={`block py-1 px-2 text-[10px] sm:text-sm md:text-md lg:text-xl rounded transition-all 
                     ${
                       isDarkMode
                         ? "text-white hover:text-[#03e9f4] hover:drop-shadow-[0_0_10px_#03e9f4]"

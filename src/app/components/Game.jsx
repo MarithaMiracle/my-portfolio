@@ -60,7 +60,7 @@ const Game = ({ theme }) => {
         {!gameStarted || gameOver ? (
           <button
             onClick={startGame}
-            className={`min-w-[60px] px-3 py-1 text-[8px] sm:text-xs md:text-sm rounded-full border transition-all whitespace-nowrap
+            className={`min-w-[60px] px-3 py-1 text-[10px] sm:text-sm md:text-md rounded-full border transition-all whitespace-nowrap
               ${
                 theme === "light"
                   ? "border-[#eb94cf] text-[#eb94cf] hover:bg-[#eb94cf] hover:text-black hover:shadow-[0_0_4px_#eb94cf,0_0_10px_#eb94cf]"
@@ -72,7 +72,7 @@ const Game = ({ theme }) => {
         ) : (
           <button
             onClick={stopGame}
-            className={`min-w-[60px] px-3 py-1 text-[8px] sm:text-xs md:text-sm rounded-full border transition-all whitespace-nowrap
+            className={`min-w-[60px] px-3 py-1 text-[10px] sm:text-sm md:text-md rounded-full border transition-all whitespace-nowrap
               ${
                 theme === "light"
                   ? "border-[#eb94cf] text-[#eb94cf] hover:bg-[#eb94cf] hover:text-black hover:shadow-[0_0_4px_#eb94cf,0_0_10px_#eb94cf]"
@@ -85,7 +85,7 @@ const Game = ({ theme }) => {
 
         {/* Instruction or Game Over Text */}
         {gameStarted && !gameOver && (
-          <div className="relative font-bold text-white text-[8px] sm:text-xs md:text-sm flex items-center pr-2">
+          <div className="relative font-bold text-white text-[10px] sm:text-sm md:text-md flex items-center pr-2">
             <Sparkle
               color={sparkleColor}
               count={20}
@@ -110,7 +110,7 @@ const Game = ({ theme }) => {
         )}
 
         {gameOver && (
-          <div className="relative font-bold text-white text-[8px] sm:text-xs md:text-sm flex items-center pr-2">
+          <div className="relative font-bold text-white text-[10px] sm:text-sm md:text-md flex items-center pr-2">
             <Sparkle
               color={sparkleColor}
               count={20}
@@ -152,7 +152,7 @@ const Game = ({ theme }) => {
           <img
             src={iconSrc}
             alt="icon"
-            className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
+            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12"
           />
         </div>
       )}

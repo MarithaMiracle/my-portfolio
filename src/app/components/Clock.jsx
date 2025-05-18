@@ -23,7 +23,7 @@ const Clock = ({ theme }) => {
     <div
       className={`fixed top-12 right-4 z-50 flex items-center px-2 py-1 rounded whitespace-nowrap
         ${theme === "light" ? "text-[#eb94cf]" : "text-[#03e9f4]"}
-        text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] xl:text-[16px]
+        text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]
         font-bold flex-shrink transition-all duration-300 ease-in-out`}
       title="Current Time"
     >

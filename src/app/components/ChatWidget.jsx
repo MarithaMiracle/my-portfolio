@@ -52,16 +52,15 @@ const ChatWidget = ({ theme }) => {
   const circleColor = theme === "light" ? "#f785d3" : "#03e9f4"; // pink or blue circle
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-50 max-w-full">
       {/* Floating Icon */}
       {!isOpen && (
         <button
           onClick={toggleChat}
           className="
             rounded-full shadow-lg flex items-center justify-center bg-transparent
-            hover:scale-105 transition hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf] 
+            hover:scale-105 transition hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf]
             dark:hover:shadow-[0_0_5px_#03e9f4,0_0_15px_#03e9f4,0_0_30px_#03e9f4]
-            
             w-[48px] h-[48px]             /* base size for smallest screens */
             sm:w-[56px] sm:h-[56px]      /* small devices */
             md:w-[64px] md:h-[64px]      /* medium devices */
@@ -89,7 +88,9 @@ const ChatWidget = ({ theme }) => {
 
       {/* Chat Box */}
       {isOpen && (
-        <div className="w-80 h-[500px] bg-black border border-pink-300 dark:border-blue-200 dark:bg-[#04060f] rounded-lg shadow-2xl flex flex-col overflow-hidden">
+        <div
+          className="bg-black border border-pink-300 dark:border-blue-200 dark:bg-[#04060f] rounded-lg shadow-2xl flex flex-col overflow-hidden w-64 sm:w-80 max-h-[400px] sm:max-h-[500px]"
+        >
           {/* Header */}
           <div className="p-4 bg-gradient-to-r from-[#eb94cf] to-pink-400 dark:from-[#03e9f4] dark:to-blue-400 text-black font-bold flex justify-between items-center">
             <span>MariBot AI Assistant</span>
@@ -118,14 +119,29 @@ const ChatWidget = ({ theme }) => {
           </div>
 
           {/* Input */}
-          <form onSubmit={handleSend} className="p-4 border-t border-pink-300 dark:border-gray-700">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="w-full px-3 py-2 rounded border border-gray-300 dark:border-gray-600 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400 dark:focus:ring-blue-400 text-black dark:text-black"
-              placeholder="Type your question..."
-            />
+          <form
+            onSubmit={handleSend}
+            className="p-4 border-t border-pink-300 dark:border-gray-700"
+          >
+            <div className="flex items-center bg-white dark:bg-gray-800 rounded border border-gray-300 dark:border-gray-600 px-3">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                className="flex-grow py-2 bg-transparent text-sm focus:outline-none text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                placeholder="Type your question..."
+              />
+              <button type="submit" className="ml-2 p-1 hover:scale-105 transition">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  stroke="none"
+                  className="w-6 h-6 fill-[#f785d3] dark:fill-[#03e9f4]"
+                >
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                </svg>
+              </button>
+            </div>
           </form>
         </div>
       )}
