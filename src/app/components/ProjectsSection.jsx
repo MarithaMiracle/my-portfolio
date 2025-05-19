@@ -25,7 +25,7 @@ const projectsData = [
         QUEST
       </span>
     ),
-    description: "A modern feedback collection platform built using React, TypeScript and various back-end frameworks designed to help teams gather insights effortlessly. With seamless integration into existing tools, Quest makes it easy to start collecting feedback right away. It's fully customizable to suit users' specific needs and brand with powerful analytics empower them to make informed decisions. It is built for security and scalability, growing with businesses and keeping data protected.",
+    description: "A modern feedback collection platform built using React, TypeScript, and various back-end frameworks designed to help teams gather insights effortlessly. With seamless integration into existing tools, Quest makes it easy to start collecting feedback right away. It's fully customizable to suit users' specific needs and brand with powerful analytics to empower them to make informed decisions. It is built for security and scalability, growing with businesses and keeping data protected.",
     image: "/project 2.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/MarithaMiracle/quest",
