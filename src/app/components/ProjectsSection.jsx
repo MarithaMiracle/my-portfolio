@@ -35,6 +35,19 @@ const projectsData = [
     id: 3,
     title: (
       <span className="text-[#eb94cf] dark:text-[#03e9f4]">
+        ESTATIFY
+      </span>
+    ),
+    description: "A modern feedback collection platform built using React, TypeScript, and various back-end frameworks designed to help teams gather insights effortlessly. With seamless integration into existing tools, Quest makes it easy to start collecting feedback right away. It's fully customizable to suit users' specific needs and brand with powerful analytics to empower them to make informed decisions. It is built for security and scalability, growing with businesses and keeping data protected.",
+    image: "/estatify mockup.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/MarithaMiracle/shore",
+    previewUrl: "https://github.com/MarithaMiracle/shore",
+  },
+  {
+    id: 4,
+    title: (
+      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
         MariPDF
       </span>
     ),
@@ -45,7 +58,7 @@ const projectsData = [
     previewUrl: "https://word-pdf-converter-maritha.vercel.app",
   },
   {
-    id: 4,
+    id: 5,
     title: (
       <span className="text-[#eb94cf] dark:text-[#03e9f4]">
         The Alarm Pro
@@ -58,7 +71,7 @@ const projectsData = [
     previewUrl: "https://alarm-clock-app-maritha.vercel.app",
   },
   {
-    id: 5,
+    id: 6,
     title: (
       <span className="text-[#eb94cf] dark:text-[#03e9f4]">
         Solana Blockchain Template
@@ -71,7 +84,7 @@ const projectsData = [
     previewUrl: "https://github.com/MarithaMiracle/Solana",
   },
   {
-    id: 6,
+    id: 7,
     title: (
       <span className="text-[#eb94cf] dark:text-[#03e9f4]">
         Solana NFT Toolkit
