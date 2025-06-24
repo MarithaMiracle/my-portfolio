@@ -58,7 +58,7 @@ export default function EmailSection() {
           </p>
 
           <div className="socials flex flex-row gap-4">
-            <Link href="https://github.com" target="_blank">
+            <Link href="https://github.com/MarithaMiracle" target="_blank">
               <div className="p-2 rounded-full transition duration-300 group hover:bg-[#eb94cf] dark:hover:bg-cyan-400 hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf] dark:hover:shadow-[0_0_5px_#03e9f4,0_0_15px_#03e9f4,0_0_30px_#03e9f4]">
                 <Image
                   src={GithubIcon}
@@ -67,7 +67,7 @@ export default function EmailSection() {
                 />
               </div>
             </Link>
-            <Link href="https://linkedin.com" target="_blank">
+            <Link href="https://www.linkedin.com/in/maritha-ebolosue-51771a2b1/" target="_blank">
               <div className="p-2 rounded-full transition duration-300 group hover:bg-[#eb94cf] dark:hover:bg-cyan-400 hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf] dark:hover:shadow-[0_0_5px_#03e9f4,0_0_15px_#03e9f4,0_0_30px_#03e9f4]">
                 <Image
                   src={LinkedinIcon}

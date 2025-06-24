@@ -38,8 +38,8 @@ const projectsData = [
         ESTATIFY
       </span>
     ),
-    description: "A modern feedback collection platform built using React, TypeScript, and various back-end frameworks designed to help teams gather insights effortlessly. With seamless integration into existing tools, Quest makes it easy to start collecting feedback right away. It's fully customizable to suit users' specific needs and brand with powerful analytics to empower them to make informed decisions. It is built for security and scalability, growing with businesses and keeping data protected.",
-    image: "/estatify mockup.png",
+    description: "Estatify is a streamlined real estate listing and management platform built with React, TailwindCSS, and a powerful backend infrastructure. Designed to simplify how agents and clients interact with property data, Estatify enables seamless property uploads, real-time updates, and intuitive navigation for users. With secure authentication and optimized performance, Estatify is the ideal foundation for modern real estate solutions.",
+    image: "/e mockup 5.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/MarithaMiracle/shore",
     previewUrl: "https://github.com/MarithaMiracle/shore",

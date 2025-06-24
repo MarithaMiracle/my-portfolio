@@ -48,7 +48,7 @@ const HeroSection = () => {
           <div className="flex flex-wrap justify-center gap-4 w-full max-w-full">
             <Link
               href="/#contact"
-              className="relative z-10 px-5 py-3 text-[#eb94cf] dark:text-cyan-400 text-sm sm:text-base font-medium uppercase tracking-widest overflow-hidden transition-all duration-500 hover:text-gray-900 hover:bg-[#eb94cf] dark:hover:bg-cyan-400 dark:hover:text-gray-900 hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf] dark:hover:shadow-[0_0_5px_#03e9f4,0_0_15px_#03e9f4,0_0_30px_#03e9f4] whitespace-nowrap flex-shrink"
+              className="relative rounded-full lg:rounded-none z-10 px-5 py-3 text-[#eb94cf] dark:text-cyan-400 text-xs sm:text-base lg:text-base font-medium uppercase tracking-widest overflow-hidden transition-all duration-500 hover:text-gray-900 hover:bg-[#eb94cf] dark:hover:bg-cyan-400 dark:hover:text-gray-900 hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf] dark:hover:shadow-[0_0_5px_#03e9f4,0_0_15px_#03e9f4,0_0_30px_#03e9f4] whitespace-nowrap flex-shrink"
             >
               Hire Me
               <span className="absolute z-0 top-0 left-0 w-full h-0.5 bg-[linear-gradient(90deg,transparent,#eb94cf)] dark:bg-[linear-gradient(90deg,transparent,#03e9f4)] animate-[border-run-top_1s_linear_infinite]" />
@@ -58,8 +58,8 @@ const HeroSection = () => {
             </Link>
 
             <Link
-              href="/Maritha Miracle Ebolosue Resume.pdf"
-              className="relative z-10 px-5 py-3 text-[#eb94cf] dark:text-cyan-400 text-sm sm:text-base font-medium uppercase tracking-widest overflow-hidden transition-all duration-500 hover:text-gray-900 hover:bg-[#eb94cf] dark:hover:bg-cyan-400 dark:hover:text-gray-900 hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf] dark:hover:shadow-[0_0_5px_#03e9f4,0_0_15px_#03e9f4,0_0_30px_#03e9f4] whitespace-nowrap flex-shrink"
+              href="/MARITHA MIRACLE EBOLOSUE-Software Engineer (Full-Stack) CV.pdf"
+              className="relative rounded-full lg:rounded-none z-10 px-5 py-3 text-[#eb94cf] dark:text-cyan-400 text-xs sm:text-base font-medium uppercase tracking-widest overflow-hidden transition-all duration-500 hover:text-gray-900 hover:bg-[#eb94cf] dark:hover:bg-cyan-400 dark:hover:text-gray-900 hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf] dark:hover:shadow-[0_0_5px_#03e9f4,0_0_15px_#03e9f4,0_0_30px_#03e9f4] whitespace-nowrap flex-shrink"
             >
               Download CV
               <span className="absolute z-0 top-0 left-0 w-full h-0.5 bg-[linear-gradient(90deg,transparent,#eb94cf)] dark:bg-[linear-gradient(90deg,transparent,#03e9f4)] animate-[border-run-top_1s_linear_infinite]" />
