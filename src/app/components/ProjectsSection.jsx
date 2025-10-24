@@ -48,6 +48,19 @@ const projectsData = [
     id: 4,
     title: (
       <span className="text-[#eb94cf] dark:text-[#03e9f4]">
+        VaultCraft
+      </span>
+    ),
+    description: "VaultCraft is a sleek web application for creating and managing Solana SPL tokens. It allows users to mint custom tokens, check wallet balances in real time, and connect their Phantom wallets for secure on-chain interactions. Designed for simplicity and security, VaultCraft generates and stores Solana keypairs locally on your device, ensuring full user control and privacy. With its intuitive interface, advanced encryption, and real-time data monitoring, VaultCraft serves as a powerful yet user-friendly platform for individuals and projects looking to explore, launch, and manage their own Solana-based tokens.",
+    image: "/VaultCraft.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://solana-token-generator-phi.vercel.app",
+    previewUrl: "https://solana-token-generator-phi.vercel.app",
+  },
+  {
+    id: 5,
+    title: (
+      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
         MariPDF
       </span>
     ),
@@ -58,7 +71,7 @@ const projectsData = [
     previewUrl: "https://word-pdf-converter-maritha.vercel.app",
   },
   {
-    id: 5,
+    id: 6,
     title: (
       <span className="text-[#eb94cf] dark:text-[#03e9f4]">
         The Alarm Pro
@@ -71,7 +84,7 @@ const projectsData = [
     previewUrl: "https://alarm-clock-app-maritha.vercel.app",
   },
   {
-    id: 6,
+    id: 7,
     title: (
       <span className="text-[#eb94cf] dark:text-[#03e9f4]">
         Solana Blockchain Template
@@ -84,7 +97,7 @@ const projectsData = [
     previewUrl: "https://github.com/MarithaMiracle/Solana",
   },
   {
-    id: 7,
+    id: 8,
     title: (
       <span className="text-[#eb94cf] dark:text-[#03e9f4]">
         Solana NFT Toolkit
