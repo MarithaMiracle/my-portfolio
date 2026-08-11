@@ -1,11 +1,6 @@
 import OpenAI from "openai";
 import { MARIBOT_SYSTEM_PROMPT } from "../../lib/marithaKnowledge";
 
-const groq = new OpenAI({
-  apiKey: process.env.GROQ_API_KEY,
-  baseURL: "https://api.groq.com/openai/v1",
-});
-
 const MODEL = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
 const MAX_HISTORY = 16;
 
@@ -35,6 +30,12 @@ export async function POST(req) {
         { status: 503 }
       );
     }
+
+    // Initialize lazily so Vercel builds don't fail when env vars are absent.
+    const groq = new OpenAI({
+      apiKey: process.env.GROQ_API_KEY,
+      baseURL: "https://api.groq.com/openai/v1",
+    });
 
     let body;
     try {
