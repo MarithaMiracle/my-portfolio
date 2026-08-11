@@ -49,8 +49,8 @@ const Navbar = ({ theme = "light", onThemeChange }) => {
             type="button"
             onClick={toggleDarkMode}
             aria-label={isDarkMode ? "Switch to pink theme" : "Switch to blue theme"}
-            title={isDarkMode ? "Switch to pink theme" : "Switch to blue theme"}
-            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-slate-600 px-2 py-1 sm:px-2.5 sm:py-1.5 text-[10px] sm:text-xs text-[#ADB7BE] transition-colors hover:border-[#eb94cf] hover:text-[#eb94cf] dark:hover:border-cyan-400 dark:hover:text-cyan-300"
+            title="Toggle theme"
+            className="inline-flex items-center justify-center rounded-full border border-slate-600 p-1.5 transition-colors hover:border-[#eb94cf] dark:hover:border-cyan-400"
           >
             <Image
               src={
@@ -59,13 +59,9 @@ const Navbar = ({ theme = "light", onThemeChange }) => {
                   : "/flower-svgrepo-com (1).svg"
               }
               alt=""
-              width={18}
-              height={18}
-              className="sm:h-[20px] sm:w-[20px]"
+              width={20}
+              height={20}
             />
-            <span className="font-medium tracking-wide uppercase text-white/80">
-              {isDarkMode ? "Blue theme" : "Pink theme"}
-            </span>
           </button>
         </div>
       </div>
