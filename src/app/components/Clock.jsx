@@ -21,11 +21,12 @@ const Clock = ({ theme }) => {
 
   return (
     <div
-      className={`flex items-center px-2 py-1 rounded whitespace-nowrap font-mono tabular-nums
+      className={`fixed top-[3.75rem] right-3 z-20 flex items-center px-1.5 py-0.5 rounded whitespace-nowrap
+        sm:top-16 sm:right-4 sm:px-2 sm:py-1
         ${theme === "light" ? "text-pink-400" : "text-[#03e9f4]"}
-        text-xs sm:text-sm md:text-base font-semibold`}
-      title="Current time"
-      aria-live="polite"
+        text-[11px] sm:text-sm md:text-base lg:text-lg
+        font-bold transition-all duration-300 ease-in-out`}
+      title="Current Time"
     >
       {formattedTime}
     </div>

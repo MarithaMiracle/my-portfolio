@@ -13,15 +13,13 @@ const Game = ({ theme }) => {
   const iconSize = 20;
 
   const getRandomPosition = () => {
-    const padding = 24;
-    const topOffset = 120;
-    const bottomOffset = 100;
-    const windowWidth = window.innerWidth - iconSize - padding * 2;
-    const windowHeight =
-      window.innerHeight - iconSize - topOffset - bottomOffset;
+    const padding = 80;
+    const topSafe = 100;
+    const windowWidth = Math.max(window.innerWidth - iconSize - padding, 40);
+    const windowHeight = Math.max(window.innerHeight - iconSize - padding - topSafe, 40);
 
-    const top = topOffset + Math.floor(Math.random() * Math.max(windowHeight, 1));
-    const left = padding + Math.floor(Math.random() * Math.max(windowWidth, 1));
+    const top = topSafe + Math.floor(Math.random() * windowHeight);
+    const left = Math.floor(Math.random() * windowWidth);
 
     return { top: `${top}px`, left: `${left}px` };
   };
@@ -58,11 +56,11 @@ const Game = ({ theme }) => {
 
   return (
     <>
-      <div className="flex items-center gap-2 flex-wrap min-w-0">
+      <div className="fixed top-[3.75rem] left-3 z-20 flex max-w-[calc(100vw-6.5rem)] items-center gap-1.5 flex-wrap sm:top-16 sm:left-4 sm:max-w-none sm:gap-2">
         {!gameStarted || gameOver ? (
           <button
             onClick={startGame}
-            className={`min-w-[60px] px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs md:text-sm rounded-full border transition-all whitespace-nowrap
+            className={`px-2.5 py-1 text-[10px] sm:px-3 sm:text-sm rounded-full border transition-all whitespace-nowrap
               ${
                 theme === "light"
                   ? "border-[#eb94cf] text-[#eb94cf] hover:bg-[#eb94cf] hover:text-black hover:shadow-[0_0_4px_#eb94cf,0_0_10px_#eb94cf]"
@@ -74,7 +72,7 @@ const Game = ({ theme }) => {
         ) : (
           <button
             onClick={stopGame}
-            className={`min-w-[60px] px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs md:text-sm rounded-full border transition-all whitespace-nowrap
+            className={`px-2.5 py-1 text-[10px] sm:px-3 sm:text-sm rounded-full border transition-all whitespace-nowrap
               ${
                 theme === "light"
                   ? "border-[#eb94cf] text-[#eb94cf] hover:bg-[#eb94cf] hover:text-black hover:shadow-[0_0_4px_#eb94cf,0_0_10px_#eb94cf]"
@@ -85,9 +83,8 @@ const Game = ({ theme }) => {
           </button>
         )}
 
-        {/* Instruction or Game Over Text */}
         {gameStarted && !gameOver && (
-          <div className="relative font-bold text-white text-[10px] sm:text-xs md:text-sm flex items-center min-w-0">
+          <div className="relative hidden font-bold text-white text-sm items-center pr-2 sm:flex md:text-base">
             <Sparkle
               color={sparkleColor}
               count={20}
@@ -107,12 +104,12 @@ const Game = ({ theme }) => {
                 borderRadius: "4px",
               }}
             />
-            <p className="relative z-10">{instructionText}</p>
+            <p className="relative z-10 whitespace-nowrap">{instructionText}</p>
           </div>
         )}
 
         {gameOver && (
-          <div className="relative font-bold text-white text-[10px] sm:text-xs md:text-sm flex items-center min-w-0">
+          <div className="relative font-bold text-white text-[10px] sm:text-sm md:text-base flex items-center pr-1 sm:pr-2">
             <Sparkle
               color={sparkleColor}
               count={20}
@@ -132,14 +129,13 @@ const Game = ({ theme }) => {
                 borderRadius: "4px",
               }}
             />
-            <p className="relative z-10 text-left">
-              Game over · Score: {score}
+            <p className="relative z-10 whitespace-nowrap">
+              Score: {score}
             </p>
           </div>
         )}
       </div>
 
-      {/* Floating Game Icon */}
       {!gameOver && gameStarted && (
         <div
           onClick={handleIconClick}
@@ -148,7 +144,7 @@ const Game = ({ theme }) => {
             top: iconPosition.top,
             left: iconPosition.left,
             transition: "top 0.2s, left 0.2s",
-            zIndex: 40,
+            zIndex: 30,
           }}
         >
           <img
