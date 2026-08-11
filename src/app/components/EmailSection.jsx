@@ -49,7 +49,7 @@ export default function EmailSection() {
           <p className="dark:text-[#ADB7BE] text-white mb-4 max-w-md text-base lg:text-lg">
             <TypeAnimation
               sequence={[
-                "I'm currently looking for new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+                "I'm open to software engineering roles across Europe and remote teams. Happy to talk about NestJS/Node backends, full-stack TypeScript products, or how I ship production features end to end.",
               ]}
               wrapper="span"
               speed={60}

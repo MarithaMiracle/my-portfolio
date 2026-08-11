@@ -2,17 +2,17 @@
 import React from "react";
 
 const frameworks = [
-  { name: "Node.js", color: "#90E0EF" },       // pastel blue
-  { name: "Express", color: "#FFB3C1" },       // soft coral pink
-  { name: "PostgreSQL", color: "#FFE066" },    // pastel yellow
-  { name: "MongoDB", color: "#77DD77" },       // soft mint green
-  { name: "Sequelize", color: "#D0BFFF" },     // soft lilac
-  { name: "JavaScript", color: "#FFE5B4" },    // peachy pastel
-  { name: "React", color: "#A0C4FF" },         // baby blue
-  { name: "Next.js", color: "#FFADAD" },       // warm pastel red
-  { name: "Tailwind CSS", color: "#BDE0FE" },  // sky pastel
-  { name: "TypeScript", color: "#77DD77" },    // soft green
-  { name: "Docker", color: "#A9DEF9" },        // light azure
+  { name: "TypeScript", color: "#77DD77" },
+  { name: "Node.js", color: "#90E0EF" },
+  { name: "NestJS", color: "#FFB3C1" },
+  { name: "PostgreSQL", color: "#FFE066" },
+  { name: "Express", color: "#D0BFFF" },
+  { name: "React", color: "#A0C4FF" },
+  { name: "Next.js", color: "#FFADAD" },
+  { name: "Supabase", color: "#BDE0FE" },
+  { name: "Stripe", color: "#FFE5B4" },
+  { name: "Sequelize", color: "#77DD77" },
+  { name: "Docker", color: "#A9DEF9" },
 ];
 
 

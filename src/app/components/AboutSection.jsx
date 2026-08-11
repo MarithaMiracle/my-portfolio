@@ -10,17 +10,17 @@ const TAB_DATA = [
     id: "skills",
     content: (
       <ul className="list-disc pl-3 space-y-0.5" style={{ fontSize: "clamp(14px, 1.2vw, 16px)" }}>
-        <li>Node.js</li>
-        <li>JavaScript</li>
         <li>TypeScript</li>
-        <li>React.js</li>
-        <li>Next.js</li>
-        <li>Tailwind CSS</li>
+        <li>Node.js</li>
+        <li>NestJS</li>
         <li>Express</li>
-        <li>Sequelize</li>
         <li>PostgreSQL</li>
-        <li>Mongo DB</li>
+        <li>Sequelize · Drizzle</li>
+        <li>React.js · Next.js</li>
+        <li>Supabase</li>
+        <li>Stripe · Paystack</li>
         <li>Docker</li>
+        <li>Jest</li>
       </ul>
     ),
   },
@@ -78,7 +78,7 @@ const AboutSection = () => {
           style={{ minWidth: "200px", maxWidth: "600px" }}
         >
           <h2
-            className="font-bold mb-2 text-[#eb94cf] dark:text-[#03e9f4]"
+            className="font-bold mb-2 text-[#eb94cf] dark:text-[#03e9f4] tracking-tight"
             style={{
              // replace with your pink hex or Tailwind color if needed
               fontSize: "clamp(25px, 3vw, 35px)",
@@ -92,7 +92,7 @@ const AboutSection = () => {
           >
             <TypeAnimation
               sequence={[
-                `I love to turn ideas into responsive, dynamic, and user-friendly digital experiences. With a solid foundation in both front-end and back-end technologies, I enjoy building clean, efficient solutions that bring real value. Whether I'm styling pixels to perfection or optimizing API performance, I approach every project with creativity, precision, and a growth mindset.`,
+                `I'm a software engineer who builds production web applications and APIs end to end. Most of my recent work sits in TypeScript across NestJS/Node backends and React/Next.js frontends, with PostgreSQL, payments, auth, and cloud deployment in the mix. I care about clear domain modeling, reliable integrations, and interfaces people can actually use.`,
               ]}
               wrapper="span"
               speed={60}

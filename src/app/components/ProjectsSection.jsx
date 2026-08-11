@@ -7,107 +7,121 @@ import { motion, useInView } from "framer-motion";
 const projectsData = [
   {
     id: 1,
-    title: (
-      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
-        My Portfolio
-      </span>
-    ),
-    description: "A personal website built with React, Next.js, and Tailwind CSS designed to showcase my work, skills, and experience as a full-stack developer. This project reflects my focus on performance, clean UI/UX, and smooth animations. From dynamic project filtering to theme switching, a live clock, an engaging game, interactive transitions, and even an AI assistant, every detail was crafted to deliver a polished, fun, and professional experience.",
-    image: "/project 1.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://my-portfolio-maritha.vercel.app/",
-    previewUrl: "https://my-portfolio-maritha.vercel.app/",
+    title: "GoWithMe Ride",
+    description:
+      "Production carpooling platform for Nigeria — live marketing site plus iOS/Android apps. Backend engineering for NestJS services supporting users, trips, payments, KYC, notifications, and admin workflows on a commercial team. Source remains company-owned.",
+    image: "/gowithme.png",
+    tag: ["All", "Backend", "Production"],
+    badge: "Production · Web + Mobile",
+    stack: ["TypeScript", "NestJS", "PostgreSQL", "Paystack", "MetaMap", "Firebase", "Render"],
+    caseStudyHighlights: [
+      "Public landing site at gowithmeride.com",
+      "Mobile apps live on Google Play and the Apple App Store",
+      "Payment flows with Paystack and KYC verification via MetaMap",
+      "Notification services across Firebase, SMS, and email",
+      "Backend source is private · proprietary",
+    ],
+    gitUrl: null,
+    previewUrl: "https://www.gowithmeride.com/",
+    previewLabel: "Website",
+    imagePosition: "object-top",
+    links: [
+      {
+        label: "Play Store",
+        href: "https://play.google.com/store/apps/details?id=com.gowithme",
+      },
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/app/gowithme-ride/id6758392290",
+      },
+    ],
   },
   {
     id: 2,
-    title: (
-      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
-        QUEST
-      </span>
-    ),
-    description: "A modern feedback collection platform built using React, TypeScript, and various back-end frameworks designed to help teams gather insights effortlessly. With seamless integration into existing tools, Quest makes it easy to start collecting feedback right away. It's fully customizable to suit users' specific needs and brand with powerful analytics to empower them to make informed decisions. It is built for security and scalability, growing with businesses and keeping data protected.",
+    title: "CleanScape",
+    description:
+      "Two-sided cleaning-services marketplace with role-based dashboards for customers, cleaners, and admins. Production-oriented Next.js app with auth, payments, messaging, monitoring, and scheduled jobs.",
+    image: "/cleanscape.png",
+    tag: ["All", "Full-Stack", "Web"],
+    badge: "Public case study",
+    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Sentry", "Twilio", "Zod"],
+    caseStudyHighlights: [
+      "Role-based routing from profiles (customer · cleaner · admin)",
+      "Stripe Connect payments and operational notifications",
+      "Supabase schema migrations, storage policies, and realtime",
+      "Sentry instrumentation and external cron job orchestration",
+    ],
+    gitUrl: "https://github.com/MarithaMiracle/cleanscape",
+    previewUrl: "https://cleanscape-two.vercel.app",
+    imagePosition: "object-top",
+  },
+  {
+    id: 3,
+    title: "InsureTech API",
+    description:
+      "NestJS insurance backend for purchasing plans, activating policies, and managing wallet balances. Modular domain services with Sequelize models, Swagger docs, and Jest coverage.",
+    image: "/insuretech.svg",
+    tag: ["All", "Backend"],
+    badge: "Backend API",
+    stack: ["NestJS", "TypeScript", "PostgreSQL", "Sequelize", "Swagger", "Jest"],
+    caseStudyHighlights: [
+      "Plan purchase with wallet deduction and policy activation rules",
+      "Module-bound controllers/services with unit and e2e tests",
+      "OpenAPI documentation via Swagger UI",
+    ],
+    gitUrl: "https://github.com/MarithaMiracle/insuretech-api",
+    previewUrl: null,
+    imagePosition: "object-top",
+  },
+  {
+    id: 4,
+    title: "Quest",
+    description:
+      "Feedback · SaaS-style collection platform with authenticated workflows, Postgres data modeling via Drizzle, and Stripe billing endpoints for checkout, portal, and webhooks.",
     image: "/project 2.png",
-    tag: ["All", "Web"],
+    tag: ["All", "Full-Stack", "Web"],
+    badge: "Full-stack",
+    stack: ["Next.js", "TypeScript", "Clerk", "Drizzle", "PostgreSQL", "Stripe"],
+    caseStudyHighlights: [
+      "Server actions and middleware-protected routes",
+      "Drizzle schema + migrations against Postgres",
+      "Stripe checkout, customer portal, and webhook handling",
+    ],
     gitUrl: "https://github.com/MarithaMiracle/quest",
     previewUrl: "https://github.com/MarithaMiracle/quest",
   },
   {
-    id: 3,
-    title: (
-      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
-        ESTATIFY
-      </span>
-    ),
-    description: "Estatify is a streamlined real estate listing and management platform built with React, TailwindCSS, and a powerful backend infrastructure. Designed to simplify how agents and clients interact with property data, Estatify enables seamless property uploads, real-time updates, and intuitive navigation for users. With secure authentication and optimized performance, Estatify is the ideal foundation for modern real estate solutions.",
-    image: "/e mockup 5.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://github.com/MarithaMiracle/shore",
-    previewUrl: "https://github.com/MarithaMiracle/shore",
-  },
-  {
-    id: 4,
-    title: (
-      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
-        VaultCraft
-      </span>
-    ),
-    description: "VaultCraft is a sleek web application for creating and managing Solana SPL tokens. It allows users to mint custom tokens, check wallet balances in real time, and connect their Phantom wallets for secure on-chain interactions. Designed for simplicity and security, VaultCraft generates and stores Solana keypairs locally on your device, ensuring full user control and privacy. With its intuitive interface, advanced encryption, and real-time data monitoring, VaultCraft serves as a powerful yet user-friendly platform for individuals and projects looking to explore, launch, and manage their own Solana-based tokens.",
-    image: "/VaultCraft.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://solana-token-generator-phi.vercel.app",
-    previewUrl: "https://solana-token-generator-phi.vercel.app",
-  },
-  {
     id: 5,
-    title: (
-      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
-        MariPDF
-      </span>
-    ),
-    description: "MariPDF, built using React frameworks, is a simple, efficient file conversion tool designed to seamlessly convert DOC/DOCX to PDF formats. With an intuitive drag-and-drop interface, real-time upload progress, and night/day toggling, MariPDF makes document conversion fast and user-friendly.",
-    image: "/project 3.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://word-pdf-converter-maritha.vercel.app",
-    previewUrl: "https://word-pdf-converter-maritha.vercel.app",
+    title: "Estatify",
+    description:
+      "Real estate listing and management platform with a React frontend and Express backend for property uploads, auth, and listing workflows — drawn from production full-stack work at Estatify Nigeria Limited.",
+    image: "/e mockup 5.png",
+    tag: ["All", "Full-Stack", "Web"],
+    badge: "Full-stack",
+    stack: ["React", "Node.js", "Express", "JavaScript", "Tailwind CSS"],
+    caseStudyHighlights: [
+      "Property upload and listing management flows",
+      "Authenticated agent/client interactions",
+      "Separate frontend + backend package structure",
+    ],
+    gitUrl: "https://github.com/MarithaMiracle/shore",
+    previewUrl: "https://shore-smoky.vercel.app",
   },
   {
     id: 6,
-    title: (
-      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
-        The Alarm Pro
-      </span>
-    ),
-    description: "The Alarm Pro is an all-in-one productivity tool that combines a sleek calendar with a dynamic alarm system to help users stay on schedule. Styled in calming shades of blue with a live clock, the app brings both functionality and personality to daily routine.",
-    image: "/project 4.png",
-    tag: ["All", "Mobile"],
-    gitUrl: "https://alarm-clock-app-maritha.vercel.app",
-    previewUrl: "https://alarm-clock-app-maritha.vercel.app",
-  },
-  {
-    id: 7,
-    title: (
-      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
-        Solana Blockchain Template
-      </span>
-    ),
-    description: "Solana Blockchain Template is a lightweight developer template for interacting with the Solana blockchain using TypeScript and JavaScript. This project includes essential scripts for generating cryptographic keypairs, checking wallet balances, creating and sending transactions, and interacting with custom on-chain programs. It is ideal for developers exploring Solana's capabilities and provides a practical way to understand and build on the Solana network using clean, minimal code.",
-    image: "/PProject 5.png",
+    title: "VaultCraft",
+    description:
+      "Solana SPL token toolkit for minting tokens, checking balances, and connecting Phantom wallets — useful evidence of Web3/TypeScript exploration alongside conventional backend work.",
+    image: "/VaultCraft.png",
     tag: ["All", "Web"],
-    gitUrl: "https://github.com/MarithaMiracle/Solana",
-    previewUrl: "https://github.com/MarithaMiracle/Solana",
-  },
-  {
-    id: 8,
-    title: (
-      <span className="text-[#eb94cf] dark:text-[#03e9f4]">
-        Solana NFT Toolkit
-      </span>
-    ),
-    description: "Solana NFT Toolkit is a developer utility that simplifies creating and managing NFTs on the Solana blockchain using Metaplex. It connects to Solana’s devnet, handles wallet keypairs, and provides structures for minting and updating NFTs with metadata such as name, symbol, description, seller fees, and image assets. This toolkit is ideal for developers building NFT projects who want an easy-to-use foundation for interacting with the blockchain and Metaplex protocols programmatically.",
-    image: "/PProject 6.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://github.com/MarithaMiracle/solana-metaplex",
-    previewUrl: "https://github.com/MarithaMiracle/solana-metaplex",
+    badge: "Web3",
+    stack: ["JavaScript", "Next.js", "Solana", "Phantom"],
+    caseStudyHighlights: [
+      "Client-side keypair handling and wallet connection",
+      "On-chain token minting and balance reads",
+    ],
+    gitUrl: "https://github.com/MarithaMiracle/vaultcraft",
+    previewUrl: "https://solana-token-generator-phi.vercel.app",
   },
 ];
 
@@ -129,25 +143,22 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="px-4 md:px-12 lg:px-20 py-10 max-w-7xl mx-auto">
-      <h2 className="text-center text-4xl font-bold text-[#eb94cf] dark:text-[#03e9f4] mt-20 mb-8 md:mb-12">
+      <h2 className="text-center text-4xl font-bold text-[#eb94cf] dark:text-[#03e9f4] mt-20 mb-4 md:mb-6 tracking-tight">
         /my_projects
       </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
-        />
+      <p className="text-center text-[#ADB7BE] max-w-2xl mx-auto mb-8 text-sm sm:text-base">
+        Selected engineering work — production systems first, then public case studies.
+        Private commercial code is summarized without exposing proprietary source.
+      </p>
+      <div className="text-white flex flex-row justify-center items-center gap-2 py-6 flex-wrap">
+        {["All", "Production", "Backend", "Full-Stack", "Web"].map((name) => (
+          <ProjectTag
+            key={name}
+            onClick={handleTagChange}
+            name={name}
+            isSelected={tag === name}
+          />
+        ))}
       </div>
       <ul ref={ref} className="space-y-8">
         {filteredProjects.map((project, index) => (
@@ -156,7 +167,7 @@ const ProjectsSection = () => {
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.3 }}
+            transition={{ duration: 0.3, delay: Math.min(index * 0.15, 0.6) }}
           >
             <ProjectCard
               title={project.title}
@@ -164,7 +175,13 @@ const ProjectsSection = () => {
               imgUrl={project.image}
               gitUrl={project.gitUrl}
               previewUrl={project.previewUrl}
-              imageLeft={index % 2 === 0} // even: left image, odd: right image
+              previewLabel={project.previewLabel}
+              links={project.links}
+              stack={project.stack}
+              badge={project.badge}
+              caseStudyHighlights={project.caseStudyHighlights}
+              imageLeft={index % 2 === 0}
+              imagePosition={project.imagePosition}
             />
           </motion.li>
         ))}
