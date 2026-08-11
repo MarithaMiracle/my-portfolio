@@ -19,7 +19,7 @@ function MessageBubble({ sender, text }) {
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
-        className={`max-w-[90%] sm:max-w-[85%] rounded-2xl px-3 py-2 sm:px-3.5 sm:py-2.5 text-[13px] sm:text-sm leading-relaxed shadow-sm ${
+        className={`max-w-[92%] xs:max-w-[90%] sm:max-w-[85%] rounded-2xl px-3 py-2 sm:px-3.5 sm:py-2.5 text-[13px] sm:text-sm leading-relaxed shadow-sm ${
           isUser
             ? "rounded-br-md bg-[#eb94cf] text-black dark:bg-[#03e9f4] dark:text-black"
             : "rounded-bl-md border border-white/10 bg-white/10 text-white"
@@ -56,6 +56,7 @@ const ChatWidget = () => {
   const [messages, setMessages] = useState([{ sender: "bot", text: WELCOME }]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [panelHeight, setPanelHeight] = useState(null);
   const scrollRef = useRef(null);
   const inputRef = useRef(null);
   const suggestionsRef = useRef(null);
@@ -73,6 +74,24 @@ const ChatWidget = () => {
     setSuggestionsAtEnd(atEnd);
   };
 
+  const updatePanelHeight = () => {
+    if (typeof window === "undefined") return;
+    // Prefer visualViewport so mobile keyboards don't push the composer off-screen
+    const vv = window.visualViewport;
+    const viewportH = vv?.height ?? window.innerHeight;
+    const isMobile = window.matchMedia("(max-width: 639px)").matches;
+
+    if (!isMobile) {
+      setPanelHeight(null);
+      return;
+    }
+
+    // Leave a thin top strip for backdrop dismiss (~10% of viewport, min 40 / max 72)
+    const topInset = Math.min(72, Math.max(40, Math.round(viewportH * 0.1)));
+    const available = Math.max(280, Math.floor(viewportH - topInset));
+    setPanelHeight(available);
+  };
+
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -84,8 +103,18 @@ const ChatWidget = () => {
     inputRef.current?.focus();
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    updatePanelHeight();
+
+    const vv = window.visualViewport;
+    vv?.addEventListener("resize", updatePanelHeight);
+    vv?.addEventListener("scroll", updatePanelHeight);
+    window.addEventListener("resize", updatePanelHeight);
+
     return () => {
       document.body.style.overflow = prev;
+      vv?.removeEventListener("resize", updatePanelHeight);
+      vv?.removeEventListener("scroll", updatePanelHeight);
+      window.removeEventListener("resize", updatePanelHeight);
     };
   }, [isOpen]);
 
@@ -168,7 +197,7 @@ const ChatWidget = () => {
           type="button"
           aria-label="Close chat backdrop"
           onClick={toggleChat}
-          className="pointer-events-auto absolute inset-0 bg-black/55 sm:hidden"
+          className="pointer-events-auto absolute inset-0 bg-black/60 sm:hidden"
         />
       )}
 
@@ -176,8 +205,8 @@ const ChatWidget = () => {
         <div
           className="pointer-events-auto absolute"
           style={{
-            right: "max(1rem, env(safe-area-inset-right))",
-            bottom: "max(1rem, env(safe-area-inset-bottom))",
+            right: "max(0.75rem, env(safe-area-inset-right))",
+            bottom: "max(0.75rem, env(safe-area-inset-bottom))",
           }}
         >
           <button
@@ -208,22 +237,26 @@ const ChatWidget = () => {
           role="dialog"
           aria-modal="true"
           aria-label="MariBot chat"
-          className="pointer-events-auto absolute inset-x-0 bottom-0 flex h-[min(92dvh,calc(100dvh-0.5rem))] max-h-[100dvh] w-full flex-col overflow-hidden rounded-t-3xl border border-white/10 bg-[#0a0a0a] shadow-[0_20px_60px_rgba(0,0,0,0.55)] dark:bg-[#04060f] sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(640px,calc(100dvh-3rem))] sm:w-[min(400px,calc(100vw-2rem))] sm:rounded-3xl sm:bg-[#0a0a0a]/95 sm:backdrop-blur-xl dark:sm:bg-[#04060f]/95"
-          style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+          className="pointer-events-auto absolute inset-x-0 bottom-0 flex w-full flex-col overflow-hidden rounded-t-2xl border border-white/10 bg-[#0a0a0a] shadow-[0_20px_60px_rgba(0,0,0,0.55)] dark:bg-[#04060f] sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(560px,calc(100dvh-4rem))] sm:max-h-[calc(100dvh-3rem)] sm:w-[min(380px,calc(100vw-2rem))] sm:rounded-3xl sm:bg-[#0a0a0a]/95 sm:backdrop-blur-xl dark:sm:bg-[#04060f]/95"
+          style={{
+            height: panelHeight ? `${panelHeight}px` : undefined,
+            maxHeight: panelHeight ? `${panelHeight}px` : undefined,
+            paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))",
+          }}
         >
-          <div className="mx-auto mt-2 h-1 w-10 shrink-0 rounded-full bg-white/20 sm:hidden" />
+          <div className="mx-auto mt-1.5 h-1 w-9 shrink-0 rounded-full bg-white/25 sm:hidden" />
 
-          <div className="relative shrink-0 overflow-hidden border-b border-white/10 px-3 py-2.5 sm:px-4 sm:py-3">
+          <div className="relative shrink-0 overflow-hidden border-b border-white/10 px-3 py-2 sm:px-4 sm:py-3">
             <div className="absolute inset-0 bg-gradient-to-r from-[#eb94cf]/20 via-transparent to-transparent dark:from-cyan-400/20" />
             <div className="relative flex items-center justify-between gap-2">
-              <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-[#eb94cf]/15 dark:bg-cyan-400/15 sm:h-10 sm:w-10">
-                  <img src="/images/Logo.svg" alt="" className="h-5 w-5 sm:h-6 sm:w-6" />
+              <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#eb94cf]/15 dark:bg-cyan-400/15 sm:h-10 sm:w-10 sm:rounded-2xl">
+                  <img src="/images/Logo.svg" alt="" className="h-4 w-4 sm:h-6 sm:w-6" />
                 </div>
                 <div className="min-w-0">
                   <p className="truncate text-sm font-semibold text-white">MariBot</p>
-                  <p className="truncate text-[11px] text-[#ADB7BE] sm:text-xs">
-                    Career questions · or anything else
+                  <p className="truncate text-[10px] text-[#ADB7BE] sm:text-xs">
+                    Ask about career · or anything
                   </p>
                 </div>
               </div>
@@ -240,7 +273,7 @@ const ChatWidget = () => {
 
           <div
             ref={scrollRef}
-            className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain px-3 py-3 sm:px-4 sm:py-4"
+            className="min-h-0 flex-1 space-y-2.5 overflow-y-auto overscroll-contain px-3 py-2.5 sm:space-y-3 sm:px-4 sm:py-4"
           >
             {messages.map((msg, idx) => (
               <MessageBubble key={`${msg.sender}-${idx}`} sender={msg.sender} text={msg.text} />
@@ -249,10 +282,10 @@ const ChatWidget = () => {
           </div>
 
           {showSuggestions && (
-            <div className="relative shrink-0 px-3 pb-2 sm:px-4 sm:pb-3">
+            <div className="relative shrink-0 px-3 pb-1.5 sm:px-4 sm:pb-3">
               {canScrollSuggestions && (
-                <p className="mb-1.5 flex items-center gap-1 text-[10px] text-[#6b7280] sm:text-[11px]">
-                  <span>Swipe for more prompts</span>
+                <p className="mb-1 flex items-center gap-1 text-[10px] text-[#6b7280] sm:mb-1.5 sm:text-[11px]">
+                  <span>Swipe for more</span>
                   <span
                     className={`inline-block transition ${
                       suggestionsAtEnd ? "opacity-30" : "animate-pulse text-[#eb94cf] dark:text-cyan-300"
@@ -266,7 +299,7 @@ const ChatWidget = () => {
               <div className="relative">
                 <div
                   ref={suggestionsRef}
-                  className="flex gap-2 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  className="flex gap-1.5 overflow-x-auto scroll-smooth pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-2 [&::-webkit-scrollbar]:hidden"
                   aria-label="Suggested questions. Scroll horizontally for more."
                 >
                   {SUGGESTIONS.map((suggestion) => (
@@ -274,7 +307,7 @@ const ChatWidget = () => {
                       key={suggestion}
                       type="button"
                       onClick={() => sendMessage(suggestion)}
-                      className="shrink-0 rounded-full border border-white/10 bg-white/5 px-2.5 py-1.5 text-[11px] text-[#ADB7BE] transition hover:border-[#eb94cf]/50 hover:text-white dark:hover:border-cyan-400/50 sm:px-3 sm:text-xs"
+                      className="shrink-0 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-[#ADB7BE] transition hover:border-[#eb94cf]/50 hover:text-white dark:hover:border-cyan-400/50 sm:px-3 sm:py-1.5 sm:text-xs"
                     >
                       {suggestion}
                     </button>
@@ -282,7 +315,7 @@ const ChatWidget = () => {
                 </div>
                 {canScrollSuggestions && !suggestionsAtEnd && (
                   <div
-                    className="pointer-events-none absolute inset-y-0 right-0 flex w-12 items-center justify-end bg-gradient-to-l from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent dark:from-[#04060f] dark:via-[#04060f]/80"
+                    className="pointer-events-none absolute inset-y-0 right-0 flex w-10 items-center justify-end bg-gradient-to-l from-[#0a0a0a] via-[#0a0a0a]/85 to-transparent dark:from-[#04060f] dark:via-[#04060f]/85 sm:w-12"
                     aria-hidden
                   >
                     <span className="mr-0.5 text-sm text-[#eb94cf] dark:text-cyan-300">›</span>
@@ -294,9 +327,9 @@ const ChatWidget = () => {
 
           <form
             onSubmit={handleSend}
-            className="shrink-0 border-t border-white/10 bg-black/30 p-2.5 sm:p-3"
+            className="shrink-0 border-t border-white/10 bg-black/40 p-2 sm:p-3"
           >
-            <div className="flex items-end gap-2 rounded-2xl border border-white/10 bg-white/5 px-2.5 py-1.5 focus-within:border-[#eb94cf]/50 dark:focus-within:border-cyan-400/50 sm:px-3 sm:py-2">
+            <div className="flex items-end gap-2 rounded-2xl border border-white/10 bg-white/5 px-2 py-1 focus-within:border-[#eb94cf]/50 dark:focus-within:border-cyan-400/50 sm:px-3 sm:py-2">
               <textarea
                 ref={inputRef}
                 rows={1}
@@ -309,8 +342,8 @@ const ChatWidget = () => {
                   }
                 }}
                 disabled={loading}
-                placeholder="Ask about experience, projects..."
-                className="max-h-24 min-h-[36px] w-0 flex-1 resize-none bg-transparent py-1.5 text-[13px] text-white placeholder:text-[#6b7280] focus:outline-none disabled:opacity-60 sm:max-h-28 sm:min-h-[40px] sm:py-2 sm:text-sm"
+                placeholder="Ask anything..."
+                className="max-h-20 min-h-[34px] w-0 flex-1 resize-none bg-transparent py-1.5 text-[13px] text-white placeholder:text-[#6b7280] focus:outline-none disabled:opacity-60 sm:max-h-28 sm:min-h-[40px] sm:py-2 sm:text-sm"
               />
               <button
                 type="submit"
@@ -328,12 +361,10 @@ const ChatWidget = () => {
               </button>
             </div>
             {error ? (
-              <p className="mt-1.5 text-[10px] text-red-300/90 sm:mt-2 sm:text-[11px]">{error}</p>
-            ) : (
-              <p className="mt-1.5 hidden text-[11px] text-[#6b7280] sm:mt-2 sm:block">
-                Enter to send · Shift+Enter for a new line
+              <p className="mt-1.5 text-[10px] leading-snug text-red-300/90 sm:mt-2 sm:text-[11px]">
+                {error}
               </p>
-            )}
+            ) : null}
           </form>
         </div>
       )}

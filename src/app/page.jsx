@@ -32,14 +32,23 @@ export default function Page() {
   return (
     <main className="dark:bg-[#04060f] flex min-h-screen flex-col bg-[#000000]">
       <Navbar theme={theme} onThemeChange={handleThemeChange} />
-      <div className="w-full max-w-screen-xl mt-24 mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="w-full max-w-screen-xl mt-20 sm:mt-24 mx-auto px-4 sm:px-6 lg:px-8 relative">
         <HeroSection />
-        <Clock theme={theme} />
+
+        <div className="mb-2 flex flex-col gap-2 border-b border-slate-800/50 pb-3 sm:mb-4 sm:flex-row sm:items-center sm:justify-between">
+          <Game theme={theme} />
+          <div className="flex items-center justify-between gap-2 sm:justify-end">
+            <span className="text-[10px] uppercase tracking-wide text-[#6b7280] sm:hidden">
+              Local time
+            </span>
+            <Clock theme={theme} />
+          </div>
+        </div>
+
         <AchievementsSection />
         <AboutSection />
         <ConveyorBelt />
         <ProjectsSection />
-        <Game theme={theme} />
         <EmailSection />
       </div>
       <Footer />

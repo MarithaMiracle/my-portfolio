@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
+import { PROFICIENT_TOOLS_COUNT } from "../lib/skills";
 
 const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), { ssr: false });
 
@@ -11,8 +12,9 @@ const achievementsList = [
     postfix: "+",
   },
   {
-    metric: "Engineering Roles",
-    value: "3",
+    metric: "Tools & Frameworks",
+    value: String(PROFICIENT_TOOLS_COUNT),
+    postfix: "+",
   },
   {
     metric: "Shipped Products",
@@ -45,7 +47,7 @@ const AchievementsSection = () => {
               />
               {achievement.postfix}
             </h2>
-            <p className="text-[#ADB7BE] text-[8px] sm:text-[10px] md:text-[12px] mt-1 sm:mt-2">
+            <p className="text-[#ADB7BE] text-[8px] sm:text-[10px] md:text-[12px] mt-1 sm:mt-2 text-center">
               {achievement.metric}
             </p>
           </div>

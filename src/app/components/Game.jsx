@@ -13,12 +13,15 @@ const Game = ({ theme }) => {
   const iconSize = 20;
 
   const getRandomPosition = () => {
-    const padding = 100;
-    const windowWidth = window.innerWidth - iconSize - padding;
-    const windowHeight = window.innerHeight - iconSize - padding;
+    const padding = 24;
+    const topOffset = 120;
+    const bottomOffset = 100;
+    const windowWidth = window.innerWidth - iconSize - padding * 2;
+    const windowHeight =
+      window.innerHeight - iconSize - topOffset - bottomOffset;
 
-    const top = Math.floor(Math.random() * windowHeight);
-    const left = Math.floor(Math.random() * windowWidth);
+    const top = topOffset + Math.floor(Math.random() * Math.max(windowHeight, 1));
+    const left = padding + Math.floor(Math.random() * Math.max(windowWidth, 1));
 
     return { top: `${top}px`, left: `${left}px` };
   };
@@ -55,12 +58,11 @@ const Game = ({ theme }) => {
 
   return (
     <>
-      {/* Top-left controls */}
-      <div className="fixed top-12 left-4 z-50 flex items-center gap-2 flex-wrap max-w-full">
+      <div className="flex items-center gap-2 flex-wrap min-w-0">
         {!gameStarted || gameOver ? (
           <button
             onClick={startGame}
-            className={`min-w-[60px] px-3 py-1 text-[10px] sm:text-sm md:text-md rounded-full border transition-all whitespace-nowrap
+            className={`min-w-[60px] px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs md:text-sm rounded-full border transition-all whitespace-nowrap
               ${
                 theme === "light"
                   ? "border-[#eb94cf] text-[#eb94cf] hover:bg-[#eb94cf] hover:text-black hover:shadow-[0_0_4px_#eb94cf,0_0_10px_#eb94cf]"
@@ -72,7 +74,7 @@ const Game = ({ theme }) => {
         ) : (
           <button
             onClick={stopGame}
-            className={`min-w-[60px] px-3 py-1 text-[10px] sm:text-sm md:text-md rounded-full border transition-all whitespace-nowrap
+            className={`min-w-[60px] px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs md:text-sm rounded-full border transition-all whitespace-nowrap
               ${
                 theme === "light"
                   ? "border-[#eb94cf] text-[#eb94cf] hover:bg-[#eb94cf] hover:text-black hover:shadow-[0_0_4px_#eb94cf,0_0_10px_#eb94cf]"
@@ -85,7 +87,7 @@ const Game = ({ theme }) => {
 
         {/* Instruction or Game Over Text */}
         {gameStarted && !gameOver && (
-          <div className="relative font-bold text-white text-[10px] sm:text-sm md:text-md flex items-center pr-2">
+          <div className="relative font-bold text-white text-[10px] sm:text-xs md:text-sm flex items-center min-w-0">
             <Sparkle
               color={sparkleColor}
               count={20}
@@ -105,12 +107,12 @@ const Game = ({ theme }) => {
                 borderRadius: "4px",
               }}
             />
-            <p className="relative z-10 whitespace-nowrap">{instructionText}</p>
+            <p className="relative z-10">{instructionText}</p>
           </div>
         )}
 
         {gameOver && (
-          <div className="relative font-bold text-white text-[10px] sm:text-sm md:text-md flex items-center pr-2">
+          <div className="relative font-bold text-white text-[10px] sm:text-xs md:text-sm flex items-center min-w-0">
             <Sparkle
               color={sparkleColor}
               count={20}
@@ -130,8 +132,8 @@ const Game = ({ theme }) => {
                 borderRadius: "4px",
               }}
             />
-            <p className="relative z-10 whitespace-nowrap">
-              Game Over!<br />Final Score: {score}
+            <p className="relative z-10 text-left">
+              Game over · Score: {score}
             </p>
           </div>
         )}
@@ -146,7 +148,7 @@ const Game = ({ theme }) => {
             top: iconPosition.top,
             left: iconPosition.left,
             transition: "top 0.2s, left 0.2s",
-            zIndex: 50,
+            zIndex: 40,
           }}
         >
           <img
