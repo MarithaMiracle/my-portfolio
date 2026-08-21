@@ -44,7 +44,7 @@ const HeroSection = () => {
             </Link>
 
             <Link
-              href="/MARITHA_MIRACLE_EBOLOSUE_CV_SOFTWARE_ENGINEERING_2026.pdf"
+              href="/MARITHA_MIRACLE_EBOLOSUE_CV_SOFTWARE_ENGINEER_2026.pdf"
               className="relative rounded-full lg:rounded-none z-10 px-5 py-3 text-[#eb94cf] dark:text-cyan-400 text-xs sm:text-base font-medium uppercase tracking-widest overflow-hidden transition-all duration-500 hover:text-gray-900 hover:bg-[#eb94cf] dark:hover:bg-cyan-400 dark:hover:text-gray-900 hover:shadow-[0_0_5px_#eb94cf,0_0_15px_#eb94cf,0_0_30px_#eb94cf] dark:hover:shadow-[0_0_5px_#03e9f4,0_0_15px_#03e9f4,0_0_30px_#03e9f4] whitespace-nowrap"
             >
               Download CV
